@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Form</title>
+</head>
+<body>
+	<form method="post" action="#">
+		<fieldset>
+			<legend>User Information</legend>
+
+			<label for="username">Username</label>
+			<input type="text" placeholder="Username" name="username" id="username">
+			<br>
+			<label for="password">Password</label>
+			<input type="password" placeholder="Password" name="password" id="password">
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend>Personal Information</legend>
+			<label for="firstname">First name:</label>
+			<br>
+			<input type="text" name="firstname" id="firstname">
+			<br>
+			<label for="lastname">Last name:</label>
+			<br>
+			<input type="text" name="lastname" id="lastname">
+			<br>
+			<input type="radio" name="sex" value="male" id="male" checked>
+			<label for="male">Male</label>
+			<br>
+			<input type="radio" name="sex" value="female" id="female">
+			<label for="female">Female</label>
+			<br>
+			<label for="food">Favorite Food</label>
+			<select name="food" id="food">
+				<option value="chocolate">Chocolate</option>
+				<option value="fruits">Fruits</option>
+			</select>
+		</fieldset>
+		<br>
+		<button>Register</button>
+		<button>Reset</button>
+	</form>
+</body>
+</html>
