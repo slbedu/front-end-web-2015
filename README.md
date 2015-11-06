@@ -19,10 +19,10 @@ TCP/IP, DNS & домейни, WWW, HTTP/HTTPS в детайли, браузър�
 5. [CSS II–ра част](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/05-css-part-two)  
 Box-model, подреждане на HTML, CSS2 & CSS3
 
-6. Основи на JavaScript I-ва част  
+6. [Основи на JavaScript I-ва част](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/06-js-basics-part-one)  
 Синтаксис, типове данни, оператори, конструкции за управление
 
-7. Основи на JavaScript II-ра част  
+7. [Основи на JavaScript II-ра част](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/07-js-basics-part-two)  
 Масиви, обекти, функции и други
 
 8. [JavaScript в детайли I-ва част](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/08-advanced-js-part-one)  
