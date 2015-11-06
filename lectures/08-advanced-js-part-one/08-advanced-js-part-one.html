@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Advanced JavaScript - Part 1</title>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="syntax/xcode.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+		
+		.reveal pre code {
+			background: #eee;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>JavaScript</h1>
+				<h3>OOP. Prototypes. Inheritance. Closures</h3>
+			</section>
+
+			<section>
+				<h1>Съдържание</h1>
+				<ul>
+					<li class="fragment"><h5>Обектно ориентирано програмиране (ООП)</h5></li>
+					<li class="fragment"><h5>ООП в JavaScript</h5></li>
+					<li class="fragment"><h5>Какво е <em>this</em>?</h5></li>
+					<li class="fragment"><h5>Наследяване в класическото ООП</h5></li>
+					<li class="fragment"><h5>Prototype и prototype chain</h5></li>
+					<li class="fragment"><h5>Прототипно наследяване</h5></li>
+					<li class="fragment"><h5>Closures</h5></li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h2>ООП</h2>
+					<img src="images/OOP.jpg" alt="Какво е ООП?"/>
+				</section>
+				<section>
+					<h4>
+						<a href="http://searchsoa.techtarget.com/definition/object-oriented-programming" target="_blank">Какво
+							е ООП?</a></h4>
+
+					<p class="fragment">ООП е парадигма в компютърното програмиране</p>
+
+					<p class="fragment">Програмата се моделира като набор от обекти</p>
+
+					<aside class="notes">
+						<p>Парадигма най-общо означава модел на мислене — конкретно в някоя научна дисциплина или в друг
+							епистемологичен контекст.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Обекти</h4>
+					<ul>
+						<li class="fragment">Всеки обект има цел</li>
+						<li class="fragment">Обектите могат да имат свойства (property)</li>
+						<li class="fragment">Обектите могат да извършват действия (method)</li>
+					</ul>
+
+					<aside class="notes">
+						<p>Обектите представляват истински обекти от реалния живот. Например обектът Cat има за цел да
+							опише котките в нашата програма</p>
+
+						<p>Тук може да се даде пример за обект котка, което има свойства (име, порода, години и др.)</p>
+
+						<p>И могат да извършват различни действия (да ядат, да пият вода, да мъркат и т.н.)</p>
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>ООП в JavaScript</h2>
+					<img src="images/OOP-in-JS.png" alt="ООП в JavaScript"/>
+				</section>
+
+				<section>
+					<h4>
+						ООП в JavaScript</h4>
+
+					<ul>
+						<li class="fragment">В JS няма класове и конструктори</li>
+						<li class="fragment">Обектите се създават и наследяват от обекти</li>
+						<li class="fragment">Прототипно ориентиран език</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						Класическо ООП</h4>
+
+					<img src="images/Classical-OOP.png" alt="Класическо ООП"/>
+				</section>
+
+				<section>
+					<h4>
+						Какво е класическо ООП?</h4>
+
+					<p class="fragment">ООП, наподобяващо ООП от другите езици</p>
+				</section>
+
+				<section>
+					<h4>
+						Класическо ООП</h4>
+
+					<ul>
+						<li class="fragment">Използват се функции за създаването на обекти</li>
+						<li class="fragment">Обектите се създават чрез извикване на функция с <strong style="color: red;">new</strong></li>
+						<li class="fragment">Функцията се явява като конструктор на обекти</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						Класическо ООП - пример</h4>
+
+<pre><code>function Person() { }
+
+var firstPerson = new Person(); // first instance of Person
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						Класическо ООП</h4>
+
+					<ul>
+						<li class="fragment">Всяка инстанция е независима</li>
+						<li class="fragment">Конструктор функциите могат да приемат различен брой аргументи</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						Класическо ООП - пример</h4>
+
+<pre><code>function Person(name, age) {
+	this.name = name;
+	this.age = age;
+}
+
+var firstPerson = new Person("Adam", 33); // first instance of Person
+var secondPerson = new Person("Eva", 30); // second instance of Person
+</code></pre>
+				</section>
+
+				<section>
+					<img data-src="images/demo.png">
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2><span style="color: red">this</span> в JavaScript</h2>
+					<img src="images/this.png" alt="this в JavaScript"/>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this" target="_blank">this</a></h4>
+
+					<ul class="fragment">
+						<li>Специален обект в JavaScript</li>
+						<li>Стойността му се определя от начина, по който е извикана функцията</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#Global_context" target="_blank">this в global контекст</a></h4>
+
+<pre><code>console.log(this);
+</code></pre>
+					<ul>
+						<li class="fragment">Глобалният обект (в browser-a - window)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#Function_context" target="_blank">this в контекста на функция</a></h4>
+
+<pre><code>function test() {
+	console.log(this);
+}
+test();
+</code></pre>
+					<ul>
+						<li class="fragment">Глобалният обект (в browser-a - window)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#Function_context" target="_blank">this в контекста на метод</a></h4>
+
+<pre><code>var obj = {
+	method: function () {
+		console.log(this);
+	}
+}
+obj.method();
+</code></pre>
+					<ul>
+						<li class="fragment">Обектът, от който е извикан методът</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#As_a_constructor" target="_blank">this в контекста на конструктор</a></h4>
+
+<pre><code>function Person(name) {
+	this.name = name;
+}
+var firstPerson = new Person("Adam");
+console.log(firstPerson);
+</code></pre>
+					<ul>
+						<li class="fragment">Обектът, който се създава</li>
+					</ul>
+
+					<aside class="notes">
+						<p>Тук може да се покаже какво реално се случва когато извикваме дадена функция с new</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#call_and_apply" target="_blank">Методи за промяна на this (call и apply)</a></h4>
+
+<pre><code>function add(number3){
+	console.log(this.number1 + this.number2 + number3);
+}
+</code></pre>
+
+<pre class="fragment"><code>var o = { number1: 1, number2: 2};
+add.call(o, 3);
+add.apply(o, [3]);
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#The_bind_method" target="_blank">Методи за промяна на this (bind)</a></h4>
+
+<pre><code>var o = { number1: 1, number2: 2};
+var add = function add(){
+	console.log(this.number1 + this.number2);
+}.bind(o);
+add();
+</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Prototype</h2>
+				</section>
+
+				<section>
+					<h4>
+						Какво е prototype в JavaScript?</h4>
+
+					<ul>
+						<li class="fragment">prototype е обект с properties и methods</li>
+						<li class="fragment">Всеки обект има скрито property, което държи неговия прототип (__proto__)</li>
+						<li class="fragment">Всички инстанции от даден тип споделят прототипа на типа</li>
+						<li class="fragment">Всички обекти наследяват Object</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						Добавяне на property в прототипа</h4>
+
+<pre><code>function Person(name) {
+	this.name = name;
+}
+
+Person.prototype.introduce = function () {
+  console.log("Hello, I am " + this.name);
+};
+
+var firstPerson = new Person("Adam");
+firstPerson.introduce();
+</code></pre>
+				</section>
+
+				<section>
+					<img data-src="images/demo.png">
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Създаване на properties и methods</h2>
+				</section>
+
+				<section>
+					<h4>
+						property на инстанцията</h4>
+
+<pre><code>function Person (name) {
+	this.name = name;
+}
+
+var firstPerson = new Person("Adam");
+var secondPerson = new Person("Eva");
+console.log(firstPerson.name);
+console.log(secondPerson.name);
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						property на класа (т.нар статични)</h4>
+
+<pre><code>Math.PI
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						method на инстанцията</h4>
+
+<pre><code>function Person (name) {
+	this.name = name;
+	this.introduce = function () {
+		console.log("My name is " + this.name);
+	}
+}
+
+var firstPerson = new Person("Adam");
+firstPerson.introduce();
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						По-добрият начин за дефиниране на method</h4>
+
+<pre><code>function Person (name) {
+	this.name = name;
+}
+
+Person.prototype.introduce = function () {
+	console.log("My name is " + this.name);
+};
+
+var firstPerson = new Person("Adam");
+firstPerson.introduce();
+</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Наследяване в класическото ООП и prototype chain</h2>
+				</section>
+
+				<section>
+					<h4>
+						<a href="http://www.crockford.com/javascript/inheritance.html" target="_blank">Наследяване в класическото ООП</a></h4>
+
+<pre><code>function Person(name, age) {
+	this.name = name;
+	this.age = age;
+}
+
+Person.prototype.introduce = function () {
+	console.log("My name is " + this.name + " and I am " + this.age + " years old!");
+};
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						<a href="http://www.crockford.com/javascript/inheritance.html" target="_blank">Наследяване в класическото ООП</a></h4>
+
+<pre><code>function Student(name, age, course) {
+	Person.apply(this, arguments);
+	this.course = course;
+}
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+Student.prototype.getCourse = function () {
+	console.log(this.course);
+}
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						Prototype chain</h4>
+
+					<ul>
+						<li class="fragment">Обектите в JavaScript могат да имат един prototype</li>
+						<li class="fragment">Прототипът също има prototype, който също има prototype...</li>
+						<li class="fragment">Това се нарича prototype chain</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						Как работи prototype chain?</h4>
+
+					<p>Когато изивкваме property на обект</p>
+					<ol>
+						<li class="fragment">Търси се в обекта за това property</li>
+						<li class="fragment">Ако го няма в обекта, се търси в неговия prototype, ако го няма там, в неговия prototype...</li>
+						<li class="fragment">Ако се стигне до края на prototype chain, се връща undefined</li>
+					</ol>
+				</section>
+
+				<section>
+					<h4>
+						Prototype chain - DEMO</h4>
+
+<pre><code>function Person(name) {
+	this.name = name;
+}
+
+Person.prototype.age = 25;
+
+var firstPerson = new Person("Adam");
+
+console.log(firstPerson.name);
+console.log(firstPerson.age);
+console.log(firstPerson.valueOf());
+console.log(firstPerson.notExistingProperty);
+
+
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						Извикване на родителски метод</h4>
+
+<pre><code>function Person() {}
+
+Person.prototype.introduce = function () {
+	console.log("Introduce from Person introduce method");
+};
+
+function Student() {};
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+</code></pre>
+<pre class="fragment"><code>Student.prototype.introduce = function () {
+	Person.prototype.introduce.call(this);
+	console.log("Introduce from Student introduce method");
+}
+</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Прототипно наследяване</h2>
+				</section>
+
+				<section>
+					<p>JavaScript e динамичен език и всяка задача може да бъде реализирана по няколко начина</p>
+				</section>
+
+				<section>
+					<h4>
+						Прототипно наследяване - DEMO</h4>
+
+<pre><code>var person = {
+	introduce: function () {
+		console.log("My name is " + this.name);
+	}
+}
+
+var firstPerson = Object.create(person);
+firstPerson.name = "Adam";
+
+firstPerson.introduce();
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						Прототипно наследяване с init - DEMO</h4>
+
+<pre><code>var person = {
+	init: function (name) {
+		this.name = name;
+
+		return this;
+	},
+	introduce: function () {
+		console.log("My name is " + this.name);
+	}
+}
+
+var firstPerson = Object.create(person).init("Adam");
+firstPerson.introduce();
+</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Closures</h2>
+					<img src="images/closures.png" alt="Closures"/>
+				</section>
+
+				<section>
+					<h4>
+						Крачка назад - какво е scope?</h4>
+
+					<ul>
+						<li class="fragment">Място, в което променливите са декларирани и могат да бъдат използвани</li>
+						<li class="fragment">В JavaScript има два вида scope - global и function</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						Понятия, свързани със scope</h4>
+
+					<ul>
+						<li>Hoisting</li>
+						<li>Scope chain</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank">Какво е closure?</a></h4>
+
+					<ul>
+						<li class="fragment">Специален вид структура</li>
+						<li class="fragment">Запазва функция и контекста, в който е дефинирана функцията</li>
+					</ul>
+
+<pre class="fragment"><code>function outer() {
+	var x = 5;
+
+	return function inner(y) {
+		console.log(x + y);
+	}
+}
+
+var newFunc = outer();
+newFunc(4);
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						За какво могат да бъдат използвани closures?</h4>
+
+					<ul>
+						<li class="fragment">Криене на информация (private променливи и методи)</li>
+						<li class="fragment">И (всичко)/др.</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<h2>var thank = "you!";</h2>
+
+				<p style="text-align: left;">
+					var tutors = [{ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp; name: "Адриан Бобев",<br>
+					&nbsp;&nbsp;&nbsp;&nbsp; email: "<a href="mailto:adrian.bobev@sap.com">adrian.bobev@sap.com</a>"<br>
+					}];
+				</p>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+	<script src="node_modules/reveal.js/js/reveal.js"></script>
+	<script>
+
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+			transition: 'convex',
+			dependencies: [
+				{
+					src: 'node_modules/reveal.js/lib/js/classList.js', condition: function () {
+					return !document.body.classList;
+				}
+				},
+				{
+					src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+				},
+				{
+					src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+				},
+				{
+					src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+					return !!document.querySelector('pre code');
+				}, callback: function () {
+					hljs.initHighlightingOnLoad();
+				}
+				},
+				{ src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
+			]
+		});
+
+		RevealCSSSnippet({
+			//el is a DOM node that you wish to scope the CSS too. The scoping is done via attribute selector, so beware of specificity issues with existing styles. The default is no scoping, which allows you to write CSS to target anything in the presentation.
+			el: document.getElementById('targetElement'),
+
+			//cssValue is the default CSS to be loaded into the block at initialization. The default is empty string.
+			cssValue: "background: #ff0;\r\nwidth: 500px;\r\nheight: 50px;"
+		});
+
+	</script>
+</body>
+</html>

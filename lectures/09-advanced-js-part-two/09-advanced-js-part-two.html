@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Advanced JavaScript - Part 1</title>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="syntax/xcode.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+		
+		.reveal pre code {
+			background: #eee;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>JavaScript</h1>
+				<h3>Timeouts. DOM. XHR</h3>
+			</section>
+
+			<section>
+				<h1>Съдържание</h1>
+				<ul>
+					<li class="fragment"><h5>Timeouts</h5></li>
+					<li class="fragment"><h5>DOM</h5></li>
+					<li class="fragment"><h5>XHR</h5></li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h2>Timeouts</h2>
+					<img src="images/timeouts.jpg" alt="Timeouts"/>
+				</section>
+
+				<section>
+					<h4>setTimeout и clearTimeout</h4>
+
+					<ul>
+						<li class="fragment">Изпълнява дадена функция след определено време</li>
+						<li class="fragment">Времето за изпълнение на функцията не е гарантирано, а минимално</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout" target="_blank">setTimeout</a></h4>
+<pre><code>function test() {
+	console.log("Hello");
+}
+setTimeout(test, 1000);
+
+console.log("World");
+</code></pre>
+
+<pre><code>function test() {
+	console.log("Hello");
+
+	setTimeout(test, 1000);
+}
+
+setTimeout(test, 1000);
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearTimeout" target="_blank">clearTimeout</a></h4>
+<pre><code>function test() {
+	console.log("Hello");
+}
+var timerId = setTimeout(test, 1000);
+clearTimeout(timerId);
+
+console.log("World");
+</code></pre>
+				</section>
+
+				<section>
+					<h4>setInterval и clearInterval</h4>
+					<ul>
+						<li class="fragment">Повтаря изпълнението на дадена функция на определен интервал от време</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval" target="_blank">setInterval</a></h4>
+
+<pre><code>function test() {
+	console.log("Hello");
+}
+
+setInterval(test, 1000);
+</code></pre>
+				</section>
+
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval" target="_blank">clearInterval</a></h4>
+
+<pre><code>function test() {
+	console.log("Hello");
+}
+
+var timerId = setInterval(test, 1000);
+clearInterval(timerId);
+</code></pre>
+				</section>
+
+				<section>
+					<h4>setInterval vs setTimeout</h4>
+
+					<ul>
+						<li><a href="http://javascript.info/tutorial/settimeout-setinterval" target="_blank">Understanding timers: setTimeout and setInterval</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Полезни връзки</h4>
+					<ul>
+						<li><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">What the heck is the event loop anyway?</a></li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<h2>QUIZ</h2>
+			</section>
+
+			<section>
+				<section>
+					<h2>DOM манипулации</h2>
+					<img src="images/DOM_tree.jpg" alt="Какво е ООП?"/>
+				</section>
+				<section>
+					<h4>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">Какво
+							е DOM?</a></h4>
+
+					<p class="fragment">Document Object Model</p>
+
+					<p class="fragment">Структурира се като дърво, което представя какво има на HTML/XML/SVG документ</p>
+				</section>
+
+				<section>
+					<h4><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" target="_blank">HTML елемент</a></h4>
+					<ul>
+						<li class="fragment">div, p, a, head, button, други?</li>
+						<li class="fragment">Тяхното поведение се дефинира чрез JavaScript</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Достъпване на DOM API през JavaScript</h2>
+					<img src="images/getElement.jpg" alt="ООП в JavaScript"/>
+				</section>
+
+				<section>
+					<h4>Селектори</h4>
+					<ul>
+						<li class="fragment">document.getElementById()</li>
+						<li class="fragment">document.getElementsByTagName()</li>
+						<li class="fragment">document.getElementsByClassName()</li>
+						<li class="fragment">document.querySelector()</li>
+						<li class="fragment">document.querySelectorAll()</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Пример</h4>
+
+					<pre><code>
+<div id="my-div">
+	<div id="inner-div">
+		<ul>
+			<li class="first-li">1.1</li>
+			<li class="first-li">1.2</li>
+			<li class="second-li">2.1</li>
+			<li class="second-li">2.2</li>
+		</ul>
+	</div>
+</div>
+			</code></pre>
+
+<pre>
+<code>
+document.getElementById("my-div"); // връща първия див
+document.getElementsByClassName("second-li"); // предположете? :)"
+document.getElementsByTagName("li") // всички li
+document.querySelector("li") // първото li в DOM
+</code></pre>
+				</section>
+
+				<section>
+					<a href="demos/demo1.html" target="_blank"><img data-src="images/demo.png"></a>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h4>Създаване и добавяне на DOM елементи в страница</h4>
+					<img src="images/lego.jpg" alt="Creating DOM elements">
+				</section>
+				<section>
+					<h4>Създаване на DOM елементи</h4>
+					<ul>
+						<li>document.createElement(tagName)</li>
+						<li><pre><code>var myDiv = document.createElement("div");
+console.log(myDiv);
+</code></pre></li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Добавяне на DOM в страница</h4>
+					<ul>
+						<li>element.appendChild()</li>
+						<li>element.removeChild()</li>
+					</ul>
+				<pre><code>var myDiv = document.createElement("div");
+document.body.appendChild(myDiv);
+</code></pre>
+				</section>
+				<section>
+					<a href="demos/demo2.html" target="_blank"><img data-src="images/demo.png"></a>
+					
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h4>Манипулиране на HTML елементи</h4>
+					<ul>
+						<li>element.style.propety()</li>
+						<li>element.hasAttribute()</li>
+						<li>element.toString()</li>
+						<li>element.innerHTML</li>
+						<li>element.textContent</li>
+						<li>element.children</li>
+						<li>И още много други..</li>
+					</ul>
+				</section>
+				<section>
+					<a href="demos/demo3.html" target="_blank"><img data-src="images/demo.png"></a>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h4>Добавяне на събития</h4>
+
+					<ul>
+						<li>click</li>
+						<li>addEventListener</li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/type">Информация за възможните събития</a></li>
+						<li>scrollTop</li>
+						<li>и други</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Пример</h4>
+<pre><code>var myButton = document.createElement("Button");
+myButton.addEventListener("click", function() {
+	alert("Hi there!");
+});
+</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h4><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></h4>
+					<img src="images/xhr.gif" alt="XHR">
+				</section>
+
+				<section>
+					<h4><a href="https://en.wikipedia.org/wiki/XMLHttpRequest">Какво е XHR</a></h4>
+					<ul>
+						<li class="fragment">Служи за комуникация между клиент и сървър</li>
+						<li class="fragment">Няма нужда от пълно презареждане на страницата</li>
+						<li class="fragment">Работи и с други неща освен с XML</li>
+						<li class="fragment">Използва се в AJAX програмирането</li>
+						<li class="fragment">Прави нещата "асинхронни"</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>XHR синтаксис</h4>
+<pre><code>var myRequest = new XMLHttpRequest(); //прави обект от такъв тип
+</code></pre>
+				</section>
+
+				<section>
+					<h4>Основни методи и свойства на XHR</h4>
+					<ul>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#open()">open</a> - инициализира заявката</li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#send()">send</a> - изпраща заявката</li>
+						<li>Всички методи и свойства на обекта може да прочетете <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">тук</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<a href="demos/demo4.html" target="_blank"><img data-src="images/demo.png"></a>
+				</section>
+			</section>
+
+			<section>
+				<h2>var thank = "you!";</h2>
+
+				<p style="text-align: left;">
+					var tutors = [{ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp; name: "Мартин Христов",<br>
+					&nbsp;&nbsp;&nbsp;&nbsp; email: "<a href="mailto:martin.r.hristov@sap.com">martin.r.hristov@sap.com</a>"<br>
+					}, { <br>
+					&nbsp;&nbsp;&nbsp;&nbsp; name: "Адриан Бобев",<br>
+					&nbsp;&nbsp;&nbsp;&nbsp; email: "<a href="mailto:adrian.bobev@sap.com">adrian.bobev@sap.com</a>"<br>
+					}];
+				</p>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+	<script src="node_modules/reveal.js/js/reveal.js"></script>
+	<script>
+
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+			transition: 'convex',
+			dependencies: [
+				{
+					src: 'node_modules/reveal.js/lib/js/classList.js', condition: function () {
+					return !document.body.classList;
+				}
+				},
+				{
+					src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+				},
+				{
+					src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+				},
+				{
+					src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+					return !!document.querySelector('pre code');
+				}, callback: function () {
+					hljs.initHighlightingOnLoad();
+				}
+				},
+				{ src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
+			]
+		});
+
+		RevealCSSSnippet({
+			//el is a DOM node that you wish to scope the CSS too. The scoping is done via attribute selector, so beware of specificity issues with existing styles. The default is no scoping, which allows you to write CSS to target anything in the presentation.
+			el: document.getElementById('targetElement'),
+
+			//cssValue is the default CSS to be loaded into the block at initialization. The default is empty string.
+			cssValue: "background: #ff0;\r\nwidth: 500px;\r\nheight: 50px;"
+		});
+
+	</script>
+</body>
+</html>

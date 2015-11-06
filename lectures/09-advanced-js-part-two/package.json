@@ -1,0 +1,10 @@
+{
+  "name": "lecture",
+  "version": "1.0.0",
+  "description": "front end development at fmi by sap",
+  "main": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "reveal.js": "^3.1.0"
+  }
+}

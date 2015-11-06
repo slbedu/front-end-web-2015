@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>XHR Demo</title>
+</head>
+<body>
+	
+</body>
+
+<script>
+	function requestListener() {
+		console.log(this.responseText);
+	}
+
+	var request  = new XMLHttpRequest();
+	request.onload = requestListener;
+	request.open("get", "http://jsonplaceholder.typicode.com/posts/1", true);
+	request.send();
+</script>
+</html>

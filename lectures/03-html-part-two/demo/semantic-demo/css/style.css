@@ -1,0 +1,127 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	color: #333;
+}
+
+ol {
+	margin-left: 40px;
+}
+
+ol,
+ol > li{
+	list-style: decimal;
+}
+
+ul > li {
+	padding: 20px;
+}
+
+h2 {
+	background-color: #10ADED;
+	text-align: center;
+	font-size: 3rem;
+}
+
+h3 {
+	background-color: #F10A75;
+	font-size: 2rem;
+	padding-left: 20px;
+	color: #fff;
+	width: 100%;
+}
+
+h4 {
+	font-size: 1.5rem;
+	background-color: #A991E5;
+	text-align: center;
+}
+
+img {
+	width: 100%;
+	height: 250px;
+}
+
+html,
+body,
+body > div {
+	min-height: 100%;
+}
+
+body {
+	width: 80%;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+/*page container*/
+body > div {
+	display: flex;
+	flex-direction: column;
+}
+
+/*header container*/
+/*footer container*/
+body > div > div:first-child,
+body > div > div:last-child,
+header,
+footer {
+	background: #ccc;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	flex-basis: 100px;
+}
+
+/*Navigation*/
+body > div > div:first-child > div,
+nav {
+	flex: 1;
+}
+
+body > div > div:first-child  ul,
+nav > ul {
+	margin-left: 40px;
+	display: flex;
+	justify-content: space-around;
+}
+
+/*Content container*/
+body > div > div:nth-child(2) {
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+
+/*animals and foods container*/
+body > div > div:nth-child(2) > div,
+body > div > div:nth-child(2) > section {
+	border: 2px solid #10ADED;
+	margin: 10px 0;
+}
+
+/*sub categories containers*/
+body > div > div:nth-child(2) > div > div,
+body > div > div:nth-child(2) > section > div {
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+/*sub categories*/
+body > div > div:nth-child(2) > div > div > div,
+body > div > div:nth-child(2) > section > div > section {
+	border: 2px solid #F10A75;
+	flex-basis: 49%;
+}
+
+/*articles*/
+body > div > div:nth-child(2) > div > div > div > div,
+body > div > div:nth-child(2) > section article {
+	border: 2px solid #A991E5;
+	margin: 10px;
+}

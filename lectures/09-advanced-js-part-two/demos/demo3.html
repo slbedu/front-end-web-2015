@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Changing DOM styles</title>
+</head>
+<body>	
+</body>
+	<script>
+	    var myDiv = document.createElement("div");
+	    myDiv.id = "my-div";
+
+	    var innerDiv = document.createElement("div");
+	    innerDiv.id = "inner-div"
+
+	    var myUl = document.createElement("ul");
+
+	    for (var i = 1; i <= 4; i++) {
+	        var myLi = document.createElement("li");
+	        myLi.className = (i <= 2 ? "first-li" : "second-li");
+	        myLi.textContent = (i <= 2 ? "1." : "2.");
+	        myLi.textContent += (i <= 2 ? i : i-2);
+	        myUl.appendChild(myLi);
+	    }
+
+	    myDiv.appendChild(innerDiv);
+	    innerDiv.appendChild(myUl);
+
+	    document.body.appendChild(myDiv);
+	</script>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CSS Part 2</title>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+	</style>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h1>CSS</h1>
+			<h3>Cascading Style Sheets</h3>
+			<h4>Част първа</h4>
+			<img src="images/css.gif" width="540" height="360">
+		</section>
+
+		<section>
+			<h1>Съдържание</h1>
+			<ul>
+				<li class="fragment"><h3>HTML vs. CSS</h3></li>
+				<li class="fragment"><h3>История</h3></li>
+				<li class="fragment"><h3>Синтаксис</h3></li>
+				<li class="fragment"><h3>Селектори</h3></li>
+				<li class="fragment"><h3>Дефиниция на стилове</h3></li>
+			</ul>
+		</section>
+		<section>
+			<section>
+				<h2>HTML vs. CSS</h2>
+			</section>
+			<section>
+				<h4>HTML vs. CSS</h4>
+				<ul>
+					<li class="fragment">HTML & CSS са основните технологии на модерната фронт-енд разработка.</li>
+					<li class="fragment">Те са основата на „почти“ всеки добре изглеждащ уебсайт или уеб приложение.</li>
+					<li class="fragment">HTML се използва, за да се опише структурата на една страница.</li>
+					<li class="fragment">CSS се използва, за да „украсим“ HTML елементите.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>История</h2>
+			</section>
+			<section>
+				<h4>История</h4>
+				<ul>
+					<li class="fragment">В началото беше текстът… и нямаше CSS</li>
+					<li class="fragment">Първо се появи HTML</li>
+					<li class="fragment">После се появиха картинките</li>
+					<li class="fragment">След това се появиха таблиците (HTML 3.0)…</li>
+					<li class="fragment">… и програмистите видяха, че могат да подреждат картинки и текст</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Историята продължава</h4>
+				<ul>
+					<li class="fragment">По-късно дойдоха Уеб дизайнерите и браузърите им позволиха да слагат цветове, фонтове</li>
+					<li class="fragment">Браузърите се развиха и позволиха декларирането на нови атрибути и тагове (&lt;blink&gt;, &lt;marquee&gt; font-size)</li>
+					<li class="fragment">Всичко щеше да се сгромоляса…</li>
+					<li class="fragment">И ТОГАВА ДОЙДЕ CSS1 (17 декември 1996)…
+</li>
+					<li class="fragment">… и позволи да задаваме font-size, color, align, margin, border, padding, positioning…</li>
+				</ul>
+			</section>
+			<section>
+				<h4>И още малко история</h4>
+				<ul>
+					<li class="fragment">През май 1998 дойде CSS2 – надмножество на CSS1. CSS2 добави z-index, text-shadow, псевдо селектори, концепция за media types</li>
+					<li class="fragment">25/02/2004 – 07/06/2011 – CSS2.1</li>
+					<li class="fragment">Няма точна дата на появата на CSS3, но...</li>
+					<li class="fragment">От юни 2012 има публикувани над 50 CSS3 модула</li>
+					<li class="fragment">Като например
+						<a href="http://www.w3.org/TR/css3-color">color</a>, <a href="http://www.w3.org/TR/css-fonts-3/">fonts</a> и <a href="http://www.w3.org/TR/css3-box">box</a>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Къде пишем CSS?</h2>
+			</section>
+			<section>
+				<h4>1. В style атрибута на html елемент (inline)</h4>
+				<pre><code data-trim contenteditable>
+					&lt;h1 style="font-size: 20px; color: blue;"&gt;Заглавие&lt;/h1&gt;
+				</code></pre>
+			</section>
+			<section>
+				<h4>2. В style таг в &lt;head&gt; тага (embedded)</h4>
+				<pre><code data-trim contenteditable>
+&lt;head&gt;
+  ...
+  &lt;style type="text/css"&gt;
+    h1 {
+      font-size: 20px;
+	  color: blue;
+    }
+  &lt;/style&gt;
+  ...
+&lt;/head&gt;
+				</code></pre>
+			</section>
+			<section>
+				<h4>3. Във външен файл (external)</h4>
+				<div class="fragment">MyStyle.css</div>
+				<pre class="fragment"><code data-trim contenteditable>
+h1 {
+  font-size: 20px;
+  color: blue;
+}
+				</code></pre>
+				<div class="fragment">MyPage.html</div>
+				<pre class="fragment"><code data-trim contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+      &lt;title&gt;CSS Example&lt;/title&gt;
+      &lt;link rel="stylesheet" href="MyStyle.css"&gt;
+  &lt;/head&gt;
+  ...
+				</code></pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Синтаксис</h2>
+			</section>
+			<section>
+				<h4>Селектори</h4>
+				<ul>
+					<li>Определят кои елементи да се стилизират</li>
+					<li>След всеки селектор в къдрави скоби има списък от стилове, които се отнасят за избраните елементи</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Декларации/Стилове</h4>
+				<ul>
+					<li>Състоят се от двойки свойство:стойност (property:value)</li>
+					<li>Разделят се с ;</li>
+					<li>Заедно със селекторите образуват т.нар. css правила (css rules)</li>
+				</ul>
+				<img class="fragment" data-src="images/selector.gif">
+			</section>
+			<section>
+				<h4>Коментари</h4>
+				<pre class="fragment"><code data-trim contenteditable>
+p {
+  color: red;
+  /* Коментар на 1 ред */
+  text-align: center;
+}
+
+/* Коментар
+на няколко
+реда */
+				</code></pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Селектори</h2>
+			</section>
+			<section>
+				<h4><a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">Селектори по tag, id, клас или атрибут</a></h4>
+				<ul>
+					<li class="fragment">Селектори по tag - дефинират се с името на тага (p, div, a)</li>
+					<li class="fragment">Селектори по id - #&lt;id на елемента&gt;</li>
+					<li class="fragment">Селектори по клас - .&lt;клас на елемента&gt;</li>
+					<li class="fragment">Селектори по атрибут -<br/>[&lt;име на атрибута&gt;=&lt;стойност&gt;]</li>
+				</ul>
+			</section>
+			<section>
+				<h4><a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">Комбиниране на селектори</a></h4>
+				<ul>
+					<li class="fragment">без интервали съответства на логическо &&</li>
+					<li class="fragment">със запетаи съответства на логическо ||</li>
+					<li class="fragment">с интервали съответства на влагане</li>
+				</ul>
+				<pre class="fragment"><code data-trim contenteditable>
+.audi.a4 {
+  color: #C0C0C0; /*silver-gray*/
+  padding-bottom: 128px;
+}				
+
+header, footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+#navigation a {
+  color: white;
+  font-weight: bold;
+}
+				</code></pre>
+				<aside class="notes">
+				: ".button.active"
+				: "[type=text], [type=tel]"
+				</aside>
+			</section>
+			<section>
+				<h4><a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">Псевдо селектори</a></h4>
+				<ul>
+					<li>Дефинират се с двуеточие пред името си</li>
+					<li>Избират елемент според състоянието му</li>
+				</ul>
+				<pre class="fragment"><code data-trim contenteditable>
+a:link {color: blue;}
+a:visited {color: purple;}
+a:hover {color: #FF00FF;}
+div:first-child {margin-left: 20px;}
+input:required {background-color: yellow}
+				</code></pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Дефиниция на стилове</h2>
+			</section>
+			<section>
+				<h4>Стилове за размер</h4>
+				<ul>
+					<li class="fragment">В пиксели: font-size: 12px;</li>
+					<li class="fragment">В проценти: width: 100%;</li>
+					<li class="fragment">В em или rem: padding: 1rem;</li>
+					<li class="fragment">Когато размерът е 0 не пишем мерна единица</li>
+				</ul>
+			</section>
+			<section>
+				<h4><a href="http://www.w3schools.com/cssref/css_colors_legal.asp" target="_blank">Стилове за цвят</a></h4>
+				<ul>
+					<li class="fragment">Задават се със свойството color за цвят на текста</li>
+					<li class="fragment">Или със свойството background-color за цвят на фона</li>
+				</ul>
+			</section>
+			<section>
+				<h4><a href="http://www.w3schools.com/cssref/css_colors_legal.asp" target="_blank">Стилове за цвят</a></h4>
+				<ul>
+					<li class="fragment">Чрез името на цвета - red, green, blue, black, white... има над 100 имена за цветове</li>
+					<li class="fragment">Чрез hex color value - #fff, #c0c0c0</li>
+					<li class="fragment">Чрез rgb гамата - rgb(255, 0, 0)</li>
+					<li class="fragment">Чрез rgb гамата в проценти - rgb(100%, 0%, 0%)</li>
+					<li class="fragment">Чрез rgb гамата и прозрачност - rgba(255, 0, 255, 0.5)</li>
+					<li class="fragment">Чрез hsl гамата - hsl(120, 100%, 50%)</li>
+					<li class="fragment">Чрез hsl гамата и прозрачност - hslа(120, 100%, 50%, 0.3)</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Стилове за текст</h4>
+				<ul>
+					<li class="fragment">font-family - за типа на шрифта</li>
+					<li class="fragment">Ако името на шрифта е повече от 1 дума трябва да се огради в кавички</li>
+					<li class="fragment">font-size - за размера на шрифта</li>
+					<li class="fragment">font-style: italic/normal</li>
+					<li class="fragment">text-decoration: underline/overline/line-through/none</li>
+					<li class="fragment">text-transform - за смяна на малки и големи букви</li>
+				</ul>
+				<aside class="notes">
+					text-transform:
+						capitalize - първи букви главни,
+						uppercase - всички букви главни,
+						lowercase - всички букви малки,
+						none - оставя текста както е
+				</aside>
+			</section>
+			<section>
+				<h4>Стилове за текст - text spacing</h4>
+				<ul>
+					<li class="fragment">letter-spacing - разстояние между буквите</li>
+					<li class="fragment">word-spacing - разстояние между думите</li>
+					<li class="fragment">line-height - височина на реда</li>
+					<li class="fragment">text-align - подреждане на текста</li>
+					<li class="fragment">text-indent - отместване на първия ред на текста</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Стилове за текст - пример</h4>
+				<pre class="fragment"><code data-trim contenteditable>
+p {
+  letter-spacing: 0.5em;
+  word-spacing: 2em;
+  line-height: 1.5;
+  text-align: center;
+  text-indent: 50px;
+}
+
+				</code></pre>
+			</section>
+			<section>
+				<h4>!important</h4>
+			</section>
+		</section>
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://w3schools.com/css/" target="_blank">CSS in W3Schools</a></li>
+				<li><a href="http://caniuse.com/" target="_blank">Can I use</a></li>
+				<li><a href="http://www.css3-tutorial.net/" target="_blank">CSS3 tutorial</a></li>
+				<li><a href="http://flukeout.github.io/" target="_blank">Упражнение за селектори</a></li>
+			</ul>
+		</section>
+		<section>
+			<h2><a>Въпроси</a></h2>
+			<img data-src="images/HTML-questions.jpg">
+		</section>
+		<section>
+			<h2>Да направим <a href="http://www.htmldog.com/guides/css/beginner/conclusion/" target="_blank">code review</a></h2>
+		</section>
+		</section>
+		<section>
+			<h2>Благодаря</h2>
+			<p>
+				Марин Парушев<br>
+				<small>marin.parushev@sap.com</small>
+			</p>
+		</section>
+	</div>
+
+</div>
+
+<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+<script src="node_modules/reveal.js/js/reveal.js"></script>
+<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+		transition: 'convex',
+		dependencies: [
+			{
+				src: 'node_modules/reveal.js/lib/js/classList.js', condition: function () {
+				return !document.body.classList;
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+				return !!document.querySelector('[data-markdown]');
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+				return !!document.querySelector('[data-markdown]');
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+				return !!document.querySelector('pre code');
+			}, callback: function () {
+				hljs.initHighlightingOnLoad();
+			}
+			},
+			{src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true},
+			{src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true}
+		]
+	});
+
+	RevealCSSSnippet({
+		//el is a DOM node that you wish to scope the CSS too. The scoping is done via attribute selector, so beware of specificity issues with existing styles. The default is no scoping, which allows you to write CSS to target anything in the presentation.
+		el: document.getElementById('targetElement'),
+
+		//cssValue is the default CSS to be loaded into the block at initialization. The default is empty string.
+		cssValue: "background: #ff0;\r\nwidth: 500px;\r\nheight: 50px;"
+	});
+
+</script>
+</body>
+</html>

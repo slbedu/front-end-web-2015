@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DOM Events</title>
+</head>
+<body>
+	<label for="my-input">Enter your name: </label>
+	<input type="text" name="text-input" id="my-input">
+	<button id="hello-button">Say Hello!</button>
+</body>
+
+<script>
+	function sayHello(oEvent) {
+		var person = document.getElementById("my-input").value;
+		alert("Hello " + person + "!");
+	}
+
+	var helloButton = document.getElementById("hello-button");
+	helloButton.addEventListener("click", sayHello);
+
+	var myNewButton = document.createElement("input");
+	myNewButton.type = "button";
+	myNewButton.style.background = "red";
+	myNewButton.style.width = "100px";
+	myNewButton.style.height = "15px";
+	
+	myNewButton.addEventListener("click", function() {
+		alert("Button made from JavaScript only!");
+	});
+
+	myNewButton.addEventListener("mouseover", function() {
+		myNewButton.style.backgroundColor = "blue";
+	});
+	myNewButton.addEventListener("mouseout", function() {
+		myNewButton.style.backgroundColor = "red";
+	});
+
+	document.body.appendChild(myNewButton);
+</script>
+</html>

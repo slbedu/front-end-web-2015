@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>HTML Fundamentals</title>
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+
+		.reveal h1 {
+			margin-bottom: 0;
+		}
+	</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<h1>HTML</h1>
+		<h3>HyperText Markup Language</h3>
+		<h4>Syntax. Structure. Elements</h4>
+	</section>
+
+	<section>
+		<section>
+			<h2>История</h2>
+		</section>
+
+		<section>
+			<ul>
+				<li class="fragment">1991 <a href="http://www.w3.org/History/19921103-hypertext/hypertext/WWW/MarkUp/Tags.html" target="_blank">HTML Tags</a></li>
+				<li class="fragment">1993 <a href="http://www.w3.org/MarkUp/draft-ietf-iiir-html-01.txt" target="_blank">HTML</a></li>
+				<li class="fragment">1995 <a href="http://tools.ietf.org/html/rfc1866" target="_blank">HTML 2</a></li>
+				<li class="fragment">1997 <a href="http://www.w3.org/TR/REC-html32" target="_blank">HTML 3.2</a></li>
+				<li class="fragment">1997 <a href="http://www.w3.org/TR/REC-html40-971218/" target="_blank">HTML 4</a></li>
+				<li class="fragment">1999 <a href="http://www.w3.org/TR/html401/" target="_blank">HTML 4.01</a></li>
+				<li class="fragment">2014 <a href="http://www.w3.org/TR/2014/REC-html5-20141028/" target="_blank">HTML 5</a></li>
+			</ul>
+			<aside class="notes">
+				Началото на световната мрежа и HTML е в началото на 90те години на 20ти век (1990).
+				Тим Бърнърс-Ли се сочи като човекът, който е измислил концепцията за световната мрежа.
+				По това време той работи в ЦЕРН и идеята се заражда, за да помогне на учените да споделят
+				своите научни трудове по лесен начин, като има възможност един документ да води към друг,
+				който има релевантна информация. Това е възможно с помощта на хипер-текст, който като
+				концепция датира от 40те години на 20ти век (1940).
+
+				Първото публично описание на HTML се случва в края на 1991 г. от Тим Бърнърс-Ли в документ
+				наречен HTML Tags. В този документ са описание 18 елемента, които съставят езика към този момент.
+			</aside>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Синтаксис</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Glossary/Tag" target="_blank">Tags</a></h4>
+			<ul>
+				<li>Маркират началото и края на HTML елемент</li>
+				<li>Могат да се разделят на отварящи и затварящи</li>
+			</ul>
+			<pre><code contenteditable>
+				&lt;tag&gt;&lt;/tag&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Glossary/Attribute" target="_blank">Attributes</a></h4>
+			<ul>
+				<li>Дефинират на поведението на HTML елемента</li>
+				<li>Дефинират се в отварящия таг</li>
+				<li>Състоят се от име и стойност</li>
+				<li>Името и стойността се разделят с "="</li>
+				<li>Празна стойност може да бъде изпусната</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;tag key&gt;&lt;/tag&gt;
+&lt;tag key=value&gt;&lt;/tag&gt;
+&lt;tag key="value"&gt;&lt;/tag&gt;
+&lt;tag key="other value"&gt;&lt;/tag&gt;
+			</code></pre>
+		</section>
+
+    	<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Glossary/Element" target="_blank">Elements</a></h4>
+			<ul>
+				<li>Съставени са от отварящ и затварящ таг</li>
+				<li>Приемат определени атрибути</li>
+				<li>
+					Делят се на 5 групи:
+					<ul>
+						<li>normal elements</li>
+						<li>foreign elements</li>
+						<li>escapable raw text elements</li>
+						<li>raw text elements</li>
+						<li>void elements</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+<!-- voids -->
+&lt;area&gt; &lt;base&gt; &lt;br&gt; &lt;col&gt; &lt;embed&gt; &lt;hr&gt; &lt;img&gt; &lt;input&gt;
+&lt;keygen&gt; &lt;link&gt; &lt;meta&gt; &lt;param&gt; &lt;source&gt; &lt;track&gt; &lt;wbr&gt;
+			</code></pre>
+			<aside class="notes">
+				Групата на void елементите прави изключение от общото правило за отварящ/затварящ таг.
+				Елементите, които попадат в тази група имат само отварящ таг.
+				Тези елементи много често се срещат с бекслаш преди затварянето на скобите, като това е
+				останоло от спецификация на XHTML. Според спецификация на HTML този бекслаш не е необходим.
+				Тези елементи естествено приемат различни атрибути, тъй като само отварящ таг
+				не би бил особено полезен.
+			</aside>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/The_Importance_of_Correct_HTML_Commenting" target="_blank">Comments</a></h4>
+			<ul>
+				<li>Едноредови или многоредови</li>
+				<li>Коментар не може да съдържа друг коментар</li>
+				<li>Без разстояние при отварящия и затварящия таг</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+<!-- one line comment -->
+<!--
+ multiline
+ comment
+-->
+			</code></pre>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Структура</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Glossary/Doctype" target="_blank">Doctype</a></h4>
+			<ul>
+				<li>Първата декларация в HTML документа</li>
+				<li>Инструкция към браузъра за типа на документа</li>
+				<li>Валидира документа спрямо посочения тип</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;!DOCTYPE html&gt; <!-- HTML5 document type declaration -->
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html" target="_blank">Html</a></h4>
+			<ul>
+				<li>Основата на всеки HTML документ</li>
+				<li>Препоръчително е да има 'lang' атрибут</li>
+				<li>Може да съдържа единствено:
+					<ul>
+						<li>head елемент</li>
+						<li>body елемент</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;html lang=en&gt;
+&lt;/html&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head" target="_blank">Head</a></h4>
+			<ul>
+				<li>Не се визуализира от браузъра</li>
+				<li>Един или повече елемента описващи <a href="https://developers.whatwg.org/content-models.html#metadata-content" target="_blank">метаданни</a></li>
+				<li>Съдържа само по един от следните елементи:
+					<ul>
+					 <li>title елемент</li>
+					 <li>base елемент</li>
+				 </ul>
+			 </li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;head&gt;
+&lt;/head&gt;
+			</code></pre>
+			<aside class="notes">
+				Метаданните определят начина, по който ще изглежда останалата част от документа или
+				дават информация за други свързани документи като скриптове и стилове.
+			</aside>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title" target="_blank">Title</a></h4>
+			<ul>
+				<li>Определя името на документа</li>
+				<li>Визуализира се от браузъра</li>
+				<li>Препоръчително е да се дефинира винаги</li>
+				<li>Съдържа само текст</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+				&lt;title&gt;Sample page&lt;/title&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body" target="_blank">Body</a></h4>
+			<ul>
+				<li>Дефинира основното съдържание на документа</li>
+				<li>Визуализира се от браузъра</li>
+				<li>Може да съдържа <a href="https://developers.whatwg.org/content-models.html#flow-content" target="_blank">'flow content'</a></li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;body&gt;
+&lt;/body&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<pre><code data-trim contenteditable>
+<!-- code me some html please -->
+			</code></pre>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Секции</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements" target="_blank">Headings</a></h4>
+			<ul>
+				<li>Дефинирани са 6 нива</li>
+				<li>Наименоват дадена секция</li>
+				<li>Създават секции по подразбиране</li>
+				<li>Използват се при създаване на 'Съдържание'</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;h1&gt;Heading Level 1&lt;/h1&gt;
+&lt;h2&gt;Heading Level 2&lt;/h2&gt;
+&lt;h3&gt;Heading Level 3&lt;/h3&gt;
+&lt;h4&gt;Heading Level 4&lt;/h4&gt;
+&lt;h5&gt;Heading Level 5&lt;/h5&gt;
+&lt;h6&gt;Heading Level 6&lt;/h6&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section" target="_blank">Section</a></h4>
+			<ul>
+				<li>Тематично групирано съдържание</li>
+				<li>Обикновено има дефинирано заглавие</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;section&gt;
+ &lt;h1&gt;Animals&lt;/h1&gt;
+ &lt;section&gt;
+  &lt;h2&gt;Cats&lt;/h2&gt;
+ &lt;/section&gt;
+ &lt;section&gt;
+  &lt;h2&gt;Dogs&lt;/h2&gt;
+ &lt;/section&gt;
+&lt;/section&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article" target="_blank">Article</a></h4>
+			<ul>
+				<li>Самостоятелна част от съдържанието</li>
+				<li>Обикновено има дефинирано заглавие</li>
+				<li>Примери:
+					<ul>
+						<li>форум пост</li>
+						<li>блог пост</li>
+						<li>статия в новинарски сайт</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;section&gt;
+ &lt;h1&gt;Animals&lt;/h1&gt;
+ &lt;section&gt;
+  &lt;h2&gt;Cats&lt;/h2&gt;
+  &lt;article&gt;
+   &lt;h3&gt;Siamese cat&lt;/h3&gt;
+   more info on that cat that makes sense if taken out of this site
+  &lt;/article&gt;
+ &lt;/section&gt;
+&lt;/section&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header" target="_blank">Header</a></h4>
+			<ul>
+				<li>Въвеждащо съдържание на секция</li>
+				<li>Може да групира елементи като:
+					<ul>
+						<li>заглавие</li>
+						<li>поле за търсене</li>
+						<li>лого</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;section&gt;
+ &lt;header&gt;
+  LOGO
+  &lt;h1&gt;Animals&lt;/h1&gt;
+  &lt;p&gt;The life of domestic animals&lt;/p&gt;
+ &lt;/header&gt;
+&lt;/section&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer" target="_blank">Footer</a></h4>
+			<ul>
+				<li>Допълнителна информация към секция</li>
+				<li>Може да групира елементи като:
+					<ul>
+						<li>автор</li>
+						<li>авторски права</li>
+						<li>връзки към сходни теми</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;section&gt;
+ &lt;footer&gt;
+  &lt;p&gt;Author: Deyan &copy; License: MIT&lt;/p&gt;
+ &lt;/footer&gt;
+&lt;/section&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" target="_blank">Nav</a></h4>
+			<ul>
+				<li>Групиране на връзки към:
+					<ul>
+						<li>секции на страницата</li>
+						<li>вътрешни страници</li>
+						<li>външни страници</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;nav&gt;
+ &lt;ul&gt;
+  &lt;li&gt;link 1&lt;/li&gt;
+  &lt;li&gt;link 2&lt;/li&gt;
+  &lt;li&gt;link 3&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside" target="_blank">Aside</a></h4>
+			<ul>
+				<li>Допълнителна информация към съдържание</li>
+				<li>Примери:
+					<ul>
+						<li>второстепенна навигация</li>
+						<li>интересни факти</li>
+						<li>реклама</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;article&gt;
+  &lt;h1&gt;Cows&lt;/h1&gt;
+  &lt;p&gt;some info about cows&lt;/p&gt;
+  &lt;aside&gt;
+   did you know?
+   cows do give milk!
+  &lt;/aside&gt;
+&lt;/article&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section" target="_blank"></a>Полезни връзки</h4>
+			<ul>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML Element Reference</a></li>
+				<li><a href="http://html5doctor.com/element-index/" target="_blank">HTML5 Element Index</a></li>
+				<li><a href="http://html5doctor.com/outlines/" target="_blank">Document Outlines</a></li>
+				<li><a href="https://www.paciellogroup.com/blog/2013/10/html5-document-outline/" target="_blank">The HTML5 Document Outline</a></li>
+				<li><a href="http://www.w3.org/TR/html5/sections.html#outlines" target="_blank">Creating an outline</a></li>
+				<li><a href="https://gsnedders.html5.org/outliner/" target="_blank">HTML 5 Outliner</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Групиране на съдържание</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p" target="_blank">Paragraph</a></h4>
+			<ul>
+				<li>Дефинира текстов параграф</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;p&gt;first paragraph&lt;/p&gt;
+&lt;p&gt;second paragraph&lt;/p&gt;
+&lt;p&gt;third paragraph&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol" target="_blank">Ordered list</a></h4>
+			<ul>
+				<li>Дефинира подреден списък</li>
+				<li>Неща, които имат логическа поредност</li>
+				<li>Визуализира се с номера (римски, арабски)</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;ol&gt;
+ &lt;li&gt;first&lt;/li&gt;
+ &lt;li&gt;second&lt;/li&gt;
+ &lt;li&gt;third&lt;/li&gt;
+&lt;/ol&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul" target="_blank">Unordered list</a></h4>
+			<ul>
+				<li>Дефинира neподреден списък</li>
+				<li>Неща, които нямат логическа поредност</li>
+				<li>Визуализира се с форми (кръг, квадрат)</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;ul&gt;
+ &lt;li&gt;cat&lt;/li&gt;
+ &lt;li&gt;cow&lt;/li&gt;
+ &lt;li&gt;dog&lt;/li&gt;
+&lt;/ul&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div" target="_blank">Division</a></h4>
+			<ul>
+				<li>Контейнер без семантично значение</li>
+				<li>Обикновено се използва за стилизиране</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;div&gt;
+ &lt;p&gt;paragraph&lt;/p&gt;
+ &lt;ul&gt;
+  &lt;li&gt;cow&lt;/li&gt;
+  &lt;li&gt;cat&lt;/li&gt;
+  &lt;li&gt;dog&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;p&gt;another paragraph&lt;/p&gt;
+&lt;/div&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://learn.shayhowe.com/html-css/creating-lists/" target="_blank">Creating Lists</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Семантичен текст</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank">Anchor</a></h4>
+			<ul>
+				<li>Дефинира връзка към:
+					<ul>
+						<li>секции на страницата</li>
+						<li>вътрешни страници</li>
+						<li>външни страници</li>
+					</ul>
+				</li>
+				<li>Интерактивна е, когато има 'href' атрибут</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;nav&gt;
+ &lt;ul&gt;
+  &lt;li&gt;&lt;a href="http://google.com"&gt;google&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://amazon.com"&gt;amazon&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span" target="_blank">Span</a></h4>
+			<ul>
+				<li>Елемент без семантично значение</li>
+				<li>Обикновено се използва за стилизиране</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+ &lt;p&gt;something like &lt;span&gt;div element&lt;/span&gt; but not entirely&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b" target="_blank">Bold</a></h4>
+			<ul>
+				<li>Може да се използва за ключови думи</li>
+				<li>Обикновено се визуализира с удебелен шрифт</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+ &lt;p&gt;animals like &lt;b&gt;cats&lt;/b&gt; and &lt;b&gt;dogs&lt;/b&gt; make great pets&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i" target="_blank">Italic</a></h4>
+			<ul>
+				<li>Може да се използва за термини и чуждици</li>
+				<li>Обикновено се визуализира с наклонен шрифт</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+ &lt;p&gt;&lt;b&gt;cats&lt;/b&gt;(&lt;i&gt;Felis catus&lt;i&gt;) and &lt;b&gt;dogs&lt;/b&gt; make great pets&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong" target="_blank">Strong</a></h4>
+			<ul>
+				<li>Съдържание, върху което е по-важно</li>
+				<li>Има семантично значение</li>
+				<li>Обикновено се визуализира с удебелен шрифт</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+ &lt;p&gt;&lt;strong&gt;cats&lt;/strong&gt; are cute&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em" target="_blank">Emphasis</a></h4>
+			<ul>
+				<li>Съдържание, върху което се акцентира</li>
+				<li>Има семантично значение</li>
+				<li>Обикновено се визуализира с наклонен шрифт</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+ &lt;p&gt;&lt;strong&gt;cats&lt;/strong&gt; are &lt;em&gt;cute&lt;/em&gt;&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small" target="_blank">Small</a></h4>
+			<ul>
+				<li>Дребен шрифт</li>
+				<li>Примери:
+					<ul>
+						<li>авторски права</li>
+						<li>правен текст</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;p&gt;
+ &lt;strong&gt;cats&lt;/strong&gt; are &lt;em&gt;cute&lt;/em&gt;
+ &lt;small&gt;but they can be quite hairy&lt;/small&gt;
+&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup" target="_blank">Superscript</a></h4>
+			<ul>
+				<li>Шрифт с типографско значение</li>
+				<li>Визуализира се над линия на останалия текст</li>
+				<li>Примери:
+					<ul>
+						<li>научни формули</li>
+						<li>авторски символи</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;p&gt;Nike&lt;sup&gt;&copy;&lt;/sup&gt;&lt;/p&gt;
+			</code></pre>
+		</section>
+
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub" target="_blank">Subscript</a></h4>
+			<ul>
+				<li>Шрифт с типографско значение</li>
+				<li>Визуализира се под линия на останалия текст</li>
+				<li>Примери:
+					<ul>
+						<li>научни формули</li>
+					</ul>
+				</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i" target="_blank">Line Break</a></h4>
+			<ul>
+				<li>Вмъква символ за нов ред</li>
+				<li>Изрично контролиране на новите редове</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;p&gt;
+ line one&lt;br&gt;
+ line two&lt;br&gt;
+ line three
+&lt;/p&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://www.w3.org/TR/html5/text-level-semantics.html" target="_blank">Text-level semantics</a></li>
+				<li><a href="http://www.w3.org/International/questions/qa-b-and-i-tags" target="_blank">Using &lt;b&gt; and &lt;i&gt; elements</a></li>
+				<li><a href="http://engineeredweb.com/blog/2013/html5-semantic-diff-bold-strong/" target="_blank">Semantic Difference Between Bold and Strong</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Мултимедия</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img" target="_blank">Image</a></h4>
+			<ul>
+				<li>Вмъква изображение в документа</li>
+				<li>Задължително е да има 'src' атрибут</li>
+				<li>Препоръчително е да има 'alt' атрибут</li>
+			</ul>
+			<pre><code data-trim contenteditable>
+&lt;header&gt;
+ &lt;img src="http://mysite.com/logo.png" alt="MySite logo"&gt;
+ &lt;h1&gt;MySite Inc.&lt;/h1&gt;
+&lt;/header&gt;
+			</code></pre>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" target="_blank">Video</a></h4>
+			<ul>
+				<li>Вмъква видео в документа</li>
+				<li>Задължително е да има 'src' атрибут</li>
+				<li>Препоръчително е да има 'alt' атрибут</li>
+			</ul>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" target="_blank">Audio</a></h4>
+		</section>
+
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://learn.shayhowe.com/html-css/adding-media/" target="_blank">Adding Media</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video" target="_blank">Using HTML5 audio and video</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Модел на държание</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements" target="_blank">Block</a></h4>
+			<ul>
+				<li>Блоковите елементи заемат цял ред</li>
+				<li>Приемат широчина и височина</li>
+				<li>Подреждат се един под друг</li>
+				<li>Примери:
+					<ul>
+						<li>секции</li>
+						<li>групиращи елементи</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elemente" target="_blank">Inline</a></h4>
+			<ul>
+				<li>Заемат място колкото съдържанието си</li>
+				<li>Не приемат широчина и височина</li>
+				<li>Подреждат се един до друг</li>
+				<li>Примери:
+					<ul>
+						<li>текстови елементи</li>
+						<li>мултимедия</li>
+					</ul>
+				</li>
+			</ul>
+			<aside class="notes">
+				В блоковите елементи могат да се сърдържат иналайн елементи, но обратното е невалидно.
+				Елементите за видео и изображение приемат широчина и височина.
+			</aside>
+		</section>
+
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://www.thehelloworldprogram.com/web-development/html-document-flow-display-methods/" target="_blank">HTML Document Flow and Element Display Methods</a></li>
+				<li><a href="http://www.digitaltutors.com/tutorial/1837-HTML-Document-Flow" target="_blank">HTML Document Flow</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Модел на съдържание</h2>
+		</section>
+
+		<section>
+			<ul>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#metadata-content-0" target="_blank">Metadata content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#flow-content-0" target="_blank">Flow content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#sectioning-content-0" target="_blank">Sectioning content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#heading-content-0" target="_blank">Heading content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#phrasing-content-0" target="_blank">Phrasing content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#embedded-content-0" target="_blank">Embedded content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#interactive-content-0" target="_blank">Interactive content</a></li>
+				<li class="fragment"><a href="https://developers.whatwg.org/content-models.html#palpable-content-0" target="_blank">Palpable content</a></li>
+			</ul>
+
+			<aside class="notes">
+				Всеки HTML елемент има дефиниран модел на съдържание.
+				Има няколко дефинрани групи, като един елемент може да попадне в една или повече от тях.
+				Моделът на съдържание дефинира елементите, които могат да се съдържат в даден родителски елемент.
+				В зависимост от контекста, в който се използва елемента може да се държи по различен начин.
+			</aside>
+		</section>
+
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://nimbupani.com/content-models-in-html.html" target="_blank">Content Models in HTML</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<h2>Благодаря</h2>
+		<p>
+			Деян Янакиев<br>
+			<small>deyan.yanakiev@sap.com</small>
+		</p>
+	</section>
+
+</div> <!-- slides -->
+</div> <!-- reveal -->
+
+	<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+	<script src="node_modules/reveal.js/js/reveal.js"></script>
+	<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		center: true,
+		history: true,
+		transition: 'convex',
+		dependencies: [
+			{ src: 'node_modules/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true },
+			{ src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
+		]
+	});
+
+	</script>
+</body>
+</html>

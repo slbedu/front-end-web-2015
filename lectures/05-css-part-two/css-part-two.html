@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>HTML Fundamentals</title>
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+
+		.reveal h1 {
+			margin-bottom: 0;
+		}
+
+		.specificity {
+			width: 200px;
+			height: 250px;
+			line-height: 250px !important;
+			text-align: center;
+			display: inline-block;
+			margin: 15px 0 !important;
+		}
+
+		.specificity-four {
+			background: linear-gradient(0deg, hsl(0,0%,100%) 0%, hsl(150,100%,75%) 40%, hsl(150,100%,75%) 60%, hsl(0,0%,100%) 100%);
+		}
+
+		.specificity-three {
+			background: linear-gradient(hsl(0,0%,100%) 0%, hsl(100,100%,60%) 40%, hsl(100,100%,60%) 60%, hsl(0,0%,100%) 100%);
+		}
+
+		.specificity-two {
+			background: linear-gradient(hsl(0,0%,100%) 0%, hsl(50,100%,55%) 40%, hsl(50,100%,55%) 60%, hsl(0,0%,100%) 100%);
+		}
+
+		.specificity-one {
+			background: linear-gradient(hsl(0,0%,100%) 0%, hsl(0,100%,50%) 40%, hsl(0,100%,50%) 60%, hsl(0,0%,100%) 100%);
+		}
+
+		.reveal section img {
+			border: 0;
+		}
+	</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<h1>CSS</h1>
+		<h3>Cascading Style Sheets</h3>
+		<h4>Box model. Layout. Animations</h4>
+	</section>
+
+	<section>
+		<section>
+			<h2>
+				Размер на
+				<br>
+				<img src="images/box-model.png" alt="CSS Box Model Diagram" style="width: 35%" />
+				<br>
+				елементите
+			</h2>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">Box model</a></h4>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">Box-sizing</a></h4>
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">Content-box</a></h4>
+			<img src="images/content-box.png" alt="CSS Box Model Content-box" style="width: 35%" />
+		</section>
+
+		<section>
+			<h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">Border-box</a></h4>
+			<img src="images/border-box.png" alt="CSS Box Model Border-box" style="width: 35%" />
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>
+				Подредба на
+				<br>
+				<img src="images/layout.png" alt="CSS Layouts" style="width: 45%;" />
+				<br>
+				елементи
+			</h2>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>
+				Специфичност
+				<br>
+				<div class="specificity specificity-one">inline</div>
+				<div class="specificity specificity-two">id</div>
+				<div class="specificity specificity-three">class</div>
+				<div class="specificity specificity-four">tag</div>
+				<br>
+				на селектори
+			</h2>
+		</section>
+	</section>
+
+	<section>
+		<section>
+			<h2>Препроцесори</h2>
+			<img src="images/preprocessors.png" alt="CSS Preprocessors" />
+		</section>
+
+		<section>
+			<h4>Какво е препроцесор?</h4>
+		</section>
+
+		<section>
+			<h4>Кои са препроцесорите?</h4>
+			<ul>
+				<li class="fragment"><a href="http://lesscss.org/" target="_blank">Less</a></li>
+				<li class="fragment"><a href="http://www.myth.io/" target="_blank">Myth</a></li>
+				<li class="fragment"><a href="http://sass-lang.com/" target="_blank">Sass</a></li>
+				<li class="fragment"><a href="https://github.com/postcss/postcss" target="_blank">PostCSS</a></li>
+				<li class="fragment"><a href="https://learnboost.github.io/stylus/" target="_blank">Stylus</a></li>
+			</ul>
+		</section>
+
+		<section>
+			<h4>Полезни връзки</h4>
+			<ul>
+				<li><a href="http://learn.shayhowe.com/advanced-html-css/preprocessors/" target="_blank">HTML / CSS Preprocessors</a></li>
+				<li><a href="http://www.nosleepforsheep.com/development/using-a-css-preprocessor/" target="_blank">CSS preprocessors - Pros and Cons</a></li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<h2>Благодаря</h2>
+		<p>
+			Деян Янакиев<br>
+			<small>deyan.yanakiev@sap.com</small>
+		</p>
+	</section>
+
+</div> <!-- slides -->
+</div> <!-- reveal -->
+
+	<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+	<script src="node_modules/reveal.js/js/reveal.js"></script>
+	<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		center: true,
+		//history: true,
+		transition: 'convex',
+		dependencies: [
+			{ src: 'node_modules/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true },
+			{ src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
+		]
+	});
+
+	</script>
+</body>
+</html>

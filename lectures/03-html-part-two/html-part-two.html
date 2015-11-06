@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>HTML Part 2</title>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+	</style>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<img src="./images/sap-logo.png" alt="SAP Logo" style="width: 20%; "/>
+			<h1>HTML</h1>
+
+			<h3>HyperText Markup Language</h3>
+			<h4>Част втора</h4>
+		</section>
+
+		<section data-transition="zoom-in fade-out">
+			<h1>Съдържание</h1>
+			<ul>
+				<li class="fragment">
+					<h3>Таблици</h3>
+				</li>
+				<li class="fragment"><h3>Формуляри</h3></li>
+				<li class="fragment"><h3>Новости в HTML5</h3></li>
+				<li class="fragment"><h3>Семантика</h3></li>
+			</ul>
+		</section>
+		<section>
+			<section>
+				<h2><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Таблици</a></h2>
+				<img data-src="images/HTML-table.jpg">
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Таблици</a></h4>
+				<ul>
+					<li class="fragment">
+						<p>Таблиците се използват за визуализация на таблични данни:</p>
+						<ul>
+							<li class="fragment"><p>Таблицата се състои един или повече редове.</p></li>
+							<li class="fragment"><p>Редовете се състоят от една или повече клолони.</p></li>
+						</ul>
+					</li>
+
+					<li class="fragment"><p>Таблиците не се използват за визуална подредба на страницата.</p></li>
+					<li class="fragment"><p>Основни тагове на таблицата:</p>
+							<pre><code data-trim contenteditable>
+&lt;table&gt; - table root tag
+&lt;tr&gt; - table row
+&lt;td&gt; - table data
+							</code></pre>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Таблици</a></h4>
+				<div style="display: flex; justify-content: space-between; flex-direction: row;">
+					<pre style="flex-basis: 49%"><code data-trim contenteditable>
+&lt;table&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Cell 1, Row 1&lt;/td&gt;
+  &lt;td&gt;Cell 2, Row 1&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Cell 1, Row 2&lt;/td&gt;
+  &lt;td&gt;Cell 2, Row 2&lt;/td&gt;
+ &lt;/tr&gt;
+&lt;/table&gt;
+					</code></pre>
+				<img data-src="images/examples/Table-simple.png"  style="flex-basis: 30%">
+				</div>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Таблици</a></h4>
+				<p>Видове клетки:</p>
+				<ul>
+					<li>&lt;th&gt; - Заглавна Клетка (Table Header)</li>
+					<li>&lt;td&gt; - Клетка с данни (Table Data)</li>
+				</ul>
+
+				<div style="display: flex; justify-content: space-between; flex-direction: row;">
+					<pre style="flex-basis: 49%"><code data-trim contenteditable>
+&lt;tr&gt;
+ &lt;th&gt;Име&lt;/th&gt;
+ &lt;th&gt;Години&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+ &lt;td&gt;Пешо&lt;/td&gt;
+ &lt;td&gt;55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+ &lt;td&gt;Гошо&lt;/td&gt;
+ &lt;td&gt;18&lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+				<img data-src="images/examples/Table-CellTypes.png"  style="flex-basis: 30%">
+				</div>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Таблици</a></h4>
+				<p>Пълна структура на таблиците:</p>
+				<img data-src="images/examples/Table-structure.gif"  style="flex-basis: 30%">
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Таблици</a></h4>
+				<div style="display: flex; justify-content: space-between; flex-direction: row; ">
+<pre  style="flex-basis: 65%"><code data-trim contenteditable>
+&lt;table&gt;
+ &lt;caption&gt;Sample Table&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th&gt;Header Cell 1&lt;/th&gt;
+   &lt;th&gt;Header Cell 2&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tfoot&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Footer Cell 1&lt;/td&gt;
+   &lt;td&gt;Footer Cell 2&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tfoot&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Cell 1, Row 1&lt;/td&gt;
+   &lt;td&gt;Cell 2, Row 1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Cell 1, Row 2&lt;/td&gt;
+   &lt;td&gt;Cell 2, Row 2&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+</code></pre>
+				<img data-src="images/examples/Table-Full.png"  style="flex-basis: 30% ">
+				</div>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Елементи на Таблици</a></h4>
+					   <p>Йерархия на елементите</p>
+						<img data-src="images/examples/Table-Hierarchi.png"  style="flex-basis: 30% ">
+				<p><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Flow_content"
+					   target="_blank">* Flow content</a>
+				</p>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+					   target="_blank">Елементи на Таблици</a></h4>
+					<ul>
+						<li>
+							<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption"
+							target="_blank">&lt;caption&gt;</a> - Задаване на заглавие</p>
+						</li>
+						<li>
+							<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup"
+							target="_blank">&lt;colgroup&gt;</a> и
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col"
+							target="_blank">&lt;col&gt;</a> - Дефиниране на група от колони
+							</p>
+						</li>
+					</ul>
+					<a href="demo/Demo-Colgroup.html"
+							target="_blank"><img data-src="images/demo.png"></a>
+
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellpadding" target="_blank">Cellspacing and Cellpadding</a></h4>
+				<ul>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellspacing"
+						   target="_blank">cellspacing</a> - Дефинира празното разстояние между отделните клетки в пиксели.</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellpadding"
+						   target="_blank">cellpadding</a> - Дефинира празното разстояние около съдържанието на клетките.</li>
+				</ul>
+				<img data-src="images/examples/Table-CellSpacing-CellPadding.jpg">
+				<a href="demo/Demo-Cellspacing-Cellpadding.html"
+				   target="_blank"><img data-src="images/demo.png"></a>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-colspan"
+					   target="_blank">Rowspan and Colspan</a></h4>
+				<ul>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-rowspan"
+						   target="_blank">rowspan</a> - Дефинира колко реда заема клетката.</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-colspan"
+						   target="_blank">colspan</a> - Дефинира колони заема клетката.</li>
+				</ul>
+				<img data-src="images/examples/Table-Rowspan-Colspan.png">
+				<a href="demo/Demo-Rowspan-Colspan.html"
+				   target="_blank"><img data-src="images/demo.png"></a>
+			</section>
+			<section>
+				<h4><a href="http://iwebchk.com/blog/why-not-to-use-nested-html-tables/"
+					   target="_blank">Таблици в таблицата</a></h4>
+				<p>Елементът &lt;td&gt; може да съдъжържа друга таблица.</p>
+				<img data-src="images/examples/Table-Nesting.png">
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms"
+					   target="_blank">Формуляри</a></h2>
+				<img data-src="images/HTML-form.jpg">
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms"
+					   target="_blank">Какво представляват Формулярите?</a></h4>
+				<p class="fragment">Формулярите служат за събиране на информация от потребителите и изпращането й на
+					сървъра.</p>
+				<ul class="fragment">Основни Атрибути:
+					<li class="fragment">
+						<p><b>action</b> - Указва къде трябва да се изпрати информацията.</p>
+					</li>
+					<li class="fragment">
+						<p><b>method</b> - Указва кой HTTP метод да бъде използван - POST или GET.</p>
+					</li>
+				</ul>
+<pre class="fragment"><code data-trim contenteditable>
+&lt;form action="content destination" method="post"&gt;
+  --- HTML elements ---
+&lt;/form&gt;
+</code></pre>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms"
+					   target="_blank">Принцип на работа на формулярите</a></h4>
+				<p>При изпращане(submit) на формуляра данните се изпращат чрез двойка от name-value атрибути. Затова е задължително всяко въвеждащо поле да има попълнен name атрибут.</p>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
+					   target="_blank">Какви елементи може да има във формулярите?</a></h4>
+				<div class="fragment">
+					<p>Елементи с модел на съдържание <a href="https://developers.whatwg.org/content-models.html#flow-content-0" target="_blank">Flow Content</a></p>
+					<p>(с изключение на елементът &lt;form&gt;)</p>
+					<ul>
+						<li>Елементи за визуализация на информация</li>
+						<li>Елементи за въвеждане на информация</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms"
+					   target="_blank">Основни елементи използвани във формулярите:</a></h4>
+				<ul>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">&lt;input&gt;</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" target="_blank">&lt;textarea&gt;</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" target="_blank">&lt;select&gt;</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option" target="_blank">&lt;option&gt;</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup" target="_blank">&lt;optgroup&gt;</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" target="_blank">&lt;label&gt;</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset" target="_blank">&lt;fieldset&gt;</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" target="_blank">&lt;label&gt;</a></h4>
+				<ul>
+					<li class="fragment">Използват се за добавяне на поясняващ текст (заглавие) към елементите на формуляра.</li>
+					<li class="fragment">Когато се кликне на тях фокусират съответния елемент, с който са асоциирани.</li>
+					<li class="fragment">Имат голямо значение за usability (ползваемостта) и accessibility (достъпността) на елементите.</li>
+				</ul>
+				<pre class="fragment"><code data-trim contenteditable>
+&lt;label for="inputId"&gt;Enter some text&lt;/label&gt;
+&lt;input type="text" id="inputId"&gt;
+&lt;label for="checkboxId"&gt;Check me&lt;/label&gt;
+&lt;input type="checkbox" checked id="checkboxId"&gt;
+&lt;label for="radioId"&gt;Select me&lt;/label&gt;
+&lt;input type="radio" id="radioId"&gt;
+				</code></pre>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+					   target="_blank">&lt;input&gt;</a></h4>
+				<p>Приема данни от потребителя.</p>
+				<p>Различен принцип на работа - зависи от атрибута
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-type" target="_blank">type</a>.
+					Най-често използвани стойности:</p>
+				<ul>
+					<li>text - Едноредов текст</li>
+					<li>password - Парола</li>
+					<li>radio - Радио бутони</li>
+					<li>image - Събмит бутон с картинка</li>
+					<li>checkbox - Чекбокс</li>
+					<li>hidden - Скрити данни</li>
+					<li>file - Файл</li>
+					<li>submit - Бутон за изпращане на формата</li>
+					<li>reset - Бутон за изчистване на формата</li>
+				</ul>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+					   target="_blank">&lt;input&gt;</a></h4>
+				<p>Едноредов текст</p>
+				<pre><code data-trim contenteditable>
+&lt;label for="userName"&gt;UserName:&lt;/label&gt;
+&lt;input type="text" id="userName" name="username"&gt;
+				</code></pre>
+				<p>Парола</p>
+				<pre><code data-trim contenteditable>
+&lt;label for="password"&gt;Password:&lt;/label&gt;
+&lt;input type="password" id="password" name="password"&gt;
+				</code></pre>
+				<p>Радио Бутон</p>
+				<pre><code data-trim contenteditable>
+&lt;label for="citySofia"&gt;Sofia&lt;/label&gt;
+&lt;input type="radio" id="citySofia" name="city" value="Sofia"&gt;
+&lt;label for="cityPlovdiv"&gt;Plovdiv&lt;/label&gt;
+&lt;input type="radio" id="cityPlovdiv" name="city" value="Plovdiv"&gt;
+				</code></pre>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+					   target="_blank">&lt;input&gt;</a></h4>
+				<p>Събмит Бутон с Картинка</p>
+				<pre><code data-trim contenteditable>
+&lt;input type="image" src="../images/examples/submit-button.jpg"
+  name="submitBtn" alt="Submit"/&gt;
+				</code></pre>
+				<p>Чекбокс</p>
+				<pre><code data-trim contenteditable>
+&lt;label for="agreeCheckbox"&gt;I agree:&lt;/label&gt;
+&lt;input type="checkbox" id="agreeCheckbox" name="agree" value="yes"/&gt;
+				</code></pre>
+				<p>Скрити Данни</p>
+				<pre><code data-trim contenteditable>
+&lt;input type="hidden" name="hiddenData" value="Some hidden value"/&gt;
+				</code></pre>
+				<p>Бутони за изпращане и изчистване на формата</p>
+				<pre><code data-trim contenteditable>
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+				</code></pre>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+					   target="_blank">&lt;input&gt;</a></h4>
+				<a href="demo/Demo-Input.html"
+				   target="_blank"><img data-src="images/demo.png"></a>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" target="_blank">&lt;textarea&gt;</a></h4>
+				<p>Служи за въвеждане на многоредов входен текст</p>
+				<div style="display: flex; justify-content: space-between; flex-direction: row; ">
+					<pre  style="flex-basis: 65%"><code data-trim contenteditable>
+&lt;form action="#" method="post"&gt;
+ &lt;textarea name="notes" rows="4"&gt;
+  Some sample text
+ &lt;/textarea&gt;
+&lt;/form&gt;
+					</code></pre>
+					<img data-src="images/examples/Form-TextArea.png"  style="flex-basis: 30% ">
+				</div>
+			</section>
+			<section>
+				<h4>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" target="_blank">&lt;select&gt;</a>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option" target="_blank">&lt;option&gt;</a>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup" target="_blank">&lt;optgroup&gt;</a>
+				</h4>
+				<p>&lt;select&gt; елементът служи за презентиране на меню от опции.</p>
+				<p>Опциите в менюто се описват от &lt;options&gt; елементи.</p>
+				<div style="display: flex; justify-content: space-between; flex-direction: row; ">
+					<pre  style="flex-basis: 65%"><code data-trim contenteditable>
+&lt;select name="myFavouriteCar"&gt;
+ &lt;option value="mercedes"&gt;Mercedes&lt;/option&gt;
+ &lt;option value="audi"&gt;Audi&lt;/option&gt;
+&lt;/select&gt;
+					</code></pre>
+				<img data-src="images/examples/Form-SimpleSelect.png"  style="flex-basis: 30% ">
+				</div>
+				<p>С Multiple атрибутът може да позволим избирането на повече от един елемент.</p>
+				<div style="display: flex; justify-content: space-between; flex-direction: row; ">
+					<pre  style="flex-basis: 65%"><code data-trim contenteditable>
+&lt;select name="myFavouriteCars" multiple&gt;
+ &lt;option value="audi"&gt;Audi&lt;/option&gt;
+ &lt;option value="mercedes"&gt;Mercedes&lt;/option&gt;
+ &lt;option value="audi"&gt;BMW&lt;/option&gt;
+&lt;/select&gt;
+					</code></pre>
+					<img data-src="images/examples/Form-MultipleSelect.png"  style="flex-basis: 30% ">
+				</div>
+			</section>
+			<section>
+				<h4>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" target="_blank">&lt;select&gt;</a>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option" target="_blank">&lt;option&gt;</a>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup" target="_blank">&lt;optgroup&gt;</a>
+				</h4>
+				<p>Опциите могат да се групират от &lt;optgroup&gt; елементи.</p>
+				<div style="display: flex; justify-content: space-between; flex-direction: row; ">
+					<pre  style="flex-basis: 65%"><code data-trim contenteditable>
+&lt;select&gt;
+ &lt;optgroup label="German Cars"&gt;
+  &lt;option value="audi"&gt;Audi&lt;/option&gt;
+  &lt;option value="mercedes"&gt;Mercedes&lt;/option&gt;
+ &lt;/optgroup&gt;
+ &lt;optgroup label="Swedish Cars"&gt;
+  &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
+  &lt;option value="saab"&gt;Saab&lt;/option&gt;
+ &lt;/optgroup&gt;
+&lt;/select&gt;
+					</code></pre>
+					<img data-src="images/examples/Form-Select.png"  style="flex-basis: 30% ">
+				</div>
+			</section>
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset" target="_blank">&lt;fieldset&gt;</a></h4>
+				<p>Служи за групиране на елементи във формата</p>
+				<p>&lt;legend&gt; - използва се за задаване на заглавие на групата</p>
+<pre class="fragment"><code data-trim contenteditable>
+&lt;form action="#" method="post"&gt;
+ &lt;fieldset&gt;
+  &lt;legend&gt;Login&lt;/legend&gt;
+  &lt;label for="userName"&gt;UserName:&lt;/label&gt;
+  &lt;input type="text" id="userName" name="userName"&gt;
+  &lt;label for="password"&gt;Password:&lt;/label&gt;
+  &lt;input type="password" id="password" name="password"&gt;
+  &lt;input type="submit"&gt;
+  &lt;input type="reset"&gt;
+ &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+
+			</section>
+			<section>
+				<h4><a href="#">Form Validation</a></h4>
+				<a href="demo/Demo-form-validation.html"
+				   target="_blank"><img data-src="images/demo.png"></a>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h2>
+				<img data-src="images/HTML-html5.jpg">
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>Какво е HTML5?</p>
+				<ul>
+					<li class="fragment"><p>Най-новата версия на стандарта, дефиниращ HTML.</p></li>
+					<li class="fragment"><p>Първа публична чернова - 2008г.</p></li>
+					<li class="fragment"><p>Официално публикувана спецификация - 2011г.</p></li>
+				</ul>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>Какво НЕ е HTML5?</p>
+				<ul>
+					<li class="fragment"><p>Всички новости в CSS 3.</p></li>
+					<li class="fragment"><p>Новостите в ECMAScript 5/6.</p></li>
+				</ul>
+
+				<aside class="notes">
+					<p>Тук може да се каже, че е debatable дали HTML5 specification включва новосите в CSS3 и JavaScript</p>
+					<p>Като Web Sockets, Offline storage, online events, IndexedDB, Camera History, FullScreen and Navigation API, WebWorkers,</p>
+					<p>transitions, transforms animations, box-shadows, borders, multiple backgrounds etc</p>
+				</aside>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p><a href="http://www.w3schools.com/tags/tag_doctype.asp" target="_blank">Нов doctype:</a></p>
+
+				<pre><code>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;
+				</code></pre>
+
+				<pre><code>
+&lt;!DOCTYPE html&gt;
+				</code></pre>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>По-свободени правила за тагове и атрибути:</p>
+				<ul>
+					<li>Не е задължително оказването на type атрибут за script и link</li>
+					<li>Самозатварящите се тагове, не е необходимо да съдържат "/"</li>
+					<li>Не са задължителни кавички за атрибутите</li>
+				</ul>
+
+				<aside class="notes">
+					meta http-equiv="Content-Type" content="text/html; charset=utf-8" /
+				</aside>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>Нови семантични елементи</p>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>Нов атрибут <a href="http://html5doctor.com/html5-custom-data-attributes/" target="_blank">data-</a></p>
+
+				<pre><code>
+&lt;button data-transition-name="Slide" data-target="myTarget"&gt;Click me&lt;/button&gt;
+				</code></pre>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>Нови
+					<a href="http://html5doctor.com/html5-forms-input-types/" target="_blank">типове</a>
+					input и
+					<a href="http://html5doctor.com/html5-forms-introduction-and-new-attributes/" target="_blank">атрибути</a>
+				.</p>
+
+				<pre><code>
+&lt;input type="range" autofocus&gt;
+				</code></pre>
+
+				<aside class="notes">
+					<p>search, email, url, tel, number, range, date, month, week, time, datetime, color </p>
+					<p>placeholder, autofocus, autocomplete, required, pattern, list, multiple, novalidate, formnovalidate</p>
+				</aside>
+			</section>
+
+			<section>
+				<h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
+				       target="_blank">HTML5</a></h4>
+
+				<p>
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" target="_blank">Аудио</a>
+					и
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" target="_blank">видео</a>
+					поддръжка
+				</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2><a href="http://diveinto.html5doctor.com/semantics.html#new-elements"
+				       target="_blank">Семантика</a></h2>
+				<img data-src="images/HTML-semantic.jpg">
+			</section>
+			<section>
+				<h4><a href="http://www.vocabulary.com/dictionary/semantics"
+				       target="_blank">Семантика</a></h4>
+
+				<p>Какво е семантика?</p>
+				<ul>
+					<li class="fragment"><p>Смисълът и интерпретацията на думите в езика.</p></li>
+					<li class="fragment"><p>Пирилага се за думи, фрази или изречения.</p></li>
+				</ul>
+
+				<aside class="notes">
+					<p>Основният въпрос пред семантиката е разграничаването между буквалния и преносния смисъл на думите.</p>
+					<p>Примерът със започването на есента, когато листата променят цвета си и "гладен като мечка"</p>
+				</aside>
+			</section>
+
+			<section>
+				<h4><a href="http://diveinto.html5doctor.com/semantics.html#new-elements"
+				       target="_blank">Семантика</a></h4>
+
+				<p>Какво е семантичен HTML?</p>
+				<ul>
+					<li class="fragment"><p>Подпомага разбирането на структурата на страницата.</p></li>
+					<li class="fragment"><p>Засилва значението на съдържанието в страницата.</p></li>
+				</ul>
+			</section>
+
+			<section>
+				<h4><a href="http://diveinto.html5doctor.com/semantics.html#new-elements"
+				       target="_blank">Семантика</a></h4>
+
+				<p>Защо е важен семантичният HTML?</p>
+				<ul>
+					<li class="fragment"><p>Лесен е за употреба, разбиране и поддръжка.</p></li>
+					<li class="fragment"><p>По-лесен за разбиране от машини (web crawers).</p></li>
+					<li class="fragment"><p>По-лесен за интерпретиране от ScreenReaders (Гласови четци).</p></li>
+				</ul>
+
+				<aside class="notes">
+					<p>Сайтовете се достъпват и от машини, не само хора</p>
+					<p>Примерът с id="header" и header</p>
+					<p>Примерите за p, h1, strong и em (вместо of b и i)</p>
+				</aside>
+			</section>
+
+			<section>
+				<h4><a href="http://diveinto.html5doctor.com/semantics.html#new-elements"
+				       target="_blank">Семантика</a></h4>
+
+				<p>Нови семантични HTML тагове:</p>
+
+				<img data-src="images/Examples/HTML-newSemanticTags.jpg" />
+
+				<p><a href="http://html5doctor.com/downloads/h5d-sectioning-flowchart.png" target="_blank"><small>Диаграма за взимане на решения при избор на тагове</small></a></p>
+
+				<aside class="notes">
+					<p>Други, които могат да се споменат са: main, figure, figcaption</p>
+					<p>И not well supported: progress, meter, details, summary, menu</p>
+				</aside>
+			</section>
+			<section>
+				<h4><a href="demo/semantic-demo/page1.html" target="_blank">ДЕМО 1</a></h4>
+				<h4><a href="demo/semantic-demo/page2.html" target="_blank">ДЕМО 2</a></h4>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2><a>Въпроси</a></h2>
+				<img data-src="images/HTML-questions.jpg">
+			</section>
+		</section>
+		<section>
+			<h2>Благодаря</h2>
+			<p>
+				Николай Коларов<br>
+				<a href="mailto:nikolay.kolarov@sap.com"><small>nikolay.kolarov@sap.com</small></a>
+			</p>
+
+			<p>
+				Адриан Бобев<br>
+				<a href="mailto:adrian.bobev@sap.com"><small>adrian.bobev@sap.com</small></a>
+			</p>
+		</section>
+	</div>
+
+</div>
+
+<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+<script src="node_modules/reveal.js/js/reveal.js"></script>
+<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+		transition: 'convex',
+		showNotes: true,
+		dependencies: [
+			{
+				src: 'node_modules/reveal.js/lib/js/classList.js', condition: function () {
+				return !document.body.classList;
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+				return !!document.querySelector('[data-markdown]');
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+				return !!document.querySelector('[data-markdown]');
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+				return !!document.querySelector('pre code');
+			}, callback: function () {
+				hljs.initHighlightingOnLoad();
+			}
+			},
+			{src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true},
+			{src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true}
+		]
+	});
+</script>
+</body>
+</html>
