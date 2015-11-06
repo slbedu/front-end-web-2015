@@ -5,8 +5,8 @@
 2. Navigate to the presentation's folder
 
 3. Install dependencies
-```sh
-$ npm install
-```
+  ```sh
+    $ npm install
+  ```
 
 4. Open the presentation in a browser
