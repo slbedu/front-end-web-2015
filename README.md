@@ -31,10 +31,10 @@ Box-model, подреждане на HTML, CSS2 & CSS3
 9. [JavaScript в детайли II-ра част](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/09-advanced-js-part-two)  
 Timeouts, DOM манипулации, XmlHttpReques(XHR)-AJAX
 
-10. [Въведение в jQuery  ](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/10-jquery)
+10. [Въведение в jQuery](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/10-jquery)
 DOM манипулации, AJAX възможности, помощни функции и други
 
-11. Едностранични Уеб Приложения, MVC, Шаблони  
+11. [Едностранични Уеб Приложения, MVC, Шаблони](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/11-javascript-mvc) 
 Концепции, Model-View-Controller (MVC), добри практики, уеб мобилни приложения, handlebars.js
 
 12. Въведение в OPEN UI5  

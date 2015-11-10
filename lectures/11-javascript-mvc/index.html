@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="syntax/xcode.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+
+        <style media="screen">
+            .reveal {
+                background-image: url("./images/sap-logo.png");
+                background-size: auto 10%;
+                background-repeat: no-repeat;
+                background-position: 6px 6px;
+            }
+
+            .reveal pre code {
+                background: #eee;
+                color: black;
+            }
+        </style>
+    </head>
+    <bodyw>
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>JavaScript & MVC</h1>
+
+                    <p>
+                        <small>by <a href="http://github.com/jdichev">@jdichev</a></small>
+                    </p>
+
+                    <img src="MVC-2006.gif" style="width: 400px" alt="">
+
+                </section>
+
+                <section>
+                    <h2>Model-View-Controller</h2>
+
+                    <ul>
+                        <li>Шаблон за дизайн (design pattern)</li>
+                        <li>Създаден около 1978 и от тогава не е излизал от мода</li>
+                        <li>Решение са специфичен проблем - да се улесни мисловният модел на потребителя и да му се даде
+                            възможност да управлява по-добре информацията (separation of concerns)
+                        </li>
+                        <li><a href="https://heim.ifi.uio.no/~trygver/themes/mvc/mvc-index.html">Trygve Reenskaug & Xerox PARC</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Separation of Concerns</h2>
+
+                    <p>Проблемът, който MVC решава</p>
+                    <ul>
+                        <li>Model - данни</li>
+                        <li>View - изобразяване</li>
+                        <li>Controller - взаимодействие</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Защо трябва да ни пука за класическото MVC?</h2>
+
+                    <p>Доброто разбиране на решението, ни помага да използваме MVC фреймуърците по-добре.</p>
+
+                    <p>На теория :)</p>
+                </section>
+
+                <section>
+                    <h2>Модели</h2>
+
+                    <ul>
+                        <li>Обхващат специфични за дадена област знания и данни</li>
+                        <li>Комуникират с контролера в изолация от вюто</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Вюта</h2>
+
+                    <ul>
+                        <li>Трябва да знаят за контролера</li>
+                        <li>Трябва да знаят за модела</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Контролери</h2>
+
+                    <ul>
+                        <li>Обработват input и output</li>
+                        <li>Променят състоянието на моделите</li>
+                        <li>Някои имплементации съчетават вюта и контролери</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Още малко история</h2>
+
+                    <p>Какво и как се случва за да се постигнат настоящите резултати</p>
+                </section>
+
+                <section>
+                    <h2>Спагети, минимален JavaScript в уеб страниците</h2>
+
+                    <p>JavaScript не е на фокус в разработката на уеб</p>
+                </section>
+
+                <section>
+                    <h2>Rails и популяризирането на MVC в Python, PHP</h2>
+
+                    <p>Rails и Django показаха, че MVC наистина работи</p>
+                </section>
+
+                <section>
+                    <h2>Все още минимум JavaScript в браузърите</h2>
+
+                    <p>Ajax</p>
+                    <p>jQuery, Dojo, Mootools</p>
+                </section>
+
+                <section>
+                    <h2>REST и разработката на все по-бърз уеб</h2>
+
+                    <p>REST е толкова лек, че лесно може да работи с JavaScript</p>
+                    <p>Нужда от стабилни архитектури за правене на решения, в които не се генерира браузърен код на
+                        сървъра</p>
+                </section>
+
+                <section>
+                    <h2>Изобилие от JavaScript MVC фреймуърци</h2>
+
+                    <p>Броят им постоянно расте, а различни архитектури се конкурират</p>
+
+                    <p>Но как се стига до тук</p>
+                </section>
+
+                <section>
+                    <h2>Интерпретация</h2>
+
+                    <p>Шаблоните за дизайн би трябвало да бъдат общ език, но всъщност всички ги интерпретират
+                        различно</p>
+                </section>
+
+                <section>
+                    <h2>Разнообразие</h2>
+
+                    <p>Всеки има различно мнение за това какво представлява separation of concerns</p>
+                    <p>Не е нужен фреймуърк за да ползвате MVC</p>
+                </section>
+
+                <section>
+                    <h2>Разновидности на МVC</h2>
+
+                    <ul>
+                        <li>MVC</li>
+                        <li>MVP (Model-View-Presenter)</li>
+                        <li>MVVM (Model-View-ViewModel)</li>
+                        <li>MV*</li>
+                    </ul>
+                    <img src="mvc_flavors.png"/>
+                </section>
+
+                <section>
+                    <h2>Примери</h2>
+
+                    <ul>
+                        <li>Ember.js</li>
+                        <li>Backbone.js - между MVP и MVC</li>
+                        <li>KnockoutJS - MVVM</li>
+                        <li>AngularJS</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Реалност</h2>
+
+                    <p>В момента ние всички ползваме класически шаблони и ги адаптираме за работа с уеб</p>
+
+                    <p>Понякога се получава :)</p>
+                </section>
+
+                <section>
+                    <h2>Без какво MV проектите не могат</h2>
+
+                    <p>Фреймуърците поддържат в различна степен най-важните функционалности за жизнеспособни MV*
+                        приложения</p>
+                </section>
+
+                <section>
+                    <h2>Маршрутизиране (Routing)</h2>
+
+                    <p>Маршрутизирането е важно за състоянието на приложенията</p>
+                </section>
+
+                <section>
+                    <h2>Зареждане на модули (Module Loading)</h2>
+
+                    <p>Големите приложения имат нужда от модули, а модулите от ефективно зареждане</p>
+
+                    <ul>
+                        <li>Asynchronous Module Definition (AMD) & <a href="http://requirejs.org/">RequireJS</a> &
+                            friends
+                        </li>
+                        <li>Bundling - <a href="http://browserify.org/">Browserify</a> & friends</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Rendering</h2>
+
+                    <p>Вградени - Angular, Ember</p>
+
+                    <p><a href="http://handlebarsjs.com/">Handlebars</a> & <a href="http://underscorejs.org/#template">Underscore</a>
+                    </p>
+
+                    <p><a href="https://facebook.github.io/react/">React</a> & <a href="http://www.ractivejs.org/">Ractive</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Internationalization</h2>
+                </section>
+
+                <section>
+                    <h2>Достъпност</h2>
+
+                    <p>Nice to have</p>
+                </section>
+
+                <section>
+                    <h2><a href="http://todomvc.com/">TodoMVC</a></h2>
+
+                    <p>Ако искате да научите повече за MVC в JavaScript</p>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+        <script src="node_modules/reveal.js/js/reveal.js"></script>
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                transition: 'convex',
+                dependencies: [
+                    {
+                        src: 'node_modules/reveal.js/lib/js/classList.js', condition: function () {
+                        return !document.body.classList;
+                    }
+                    },
+                    {
+                        src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: 'node_modules/reveal.js/plugin/highlight/highlight.js',
+                        async: true,
+                        condition: function () {
+                            return !!document.querySelector('pre code');
+                        },
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    },
+                    {src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true},
+                    {src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true}
+                ]
+            });
+
+        </script>
+    </bodyw>
+</html>
