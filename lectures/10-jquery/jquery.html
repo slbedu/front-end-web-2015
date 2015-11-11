@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="syntax/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style media="screen">
+		.reveal {
+			background-image: url("./images/sap-logo.png");
+			background-size: auto 10%;
+			background-repeat: no-repeat;
+			background-position: 6px 6px;
+		}
+
+		.reveal h4 {
+			text-transform: none;
+		}
+		
+		li h4.small-font {
+			font-size: 90%;
+		}
+		
+		li h4.smaller-font {
+			font-size: 75%;
+		}
+	</style>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<img src="images/jquery1.png" width="736" height="181">
+		</section>
+		<section>
+			<section>
+				<h1>Съдържание</h1>
+				<ul>
+					<li class="fragment"><h3>jQuery - какво, защо и как?</h3></li>
+					<li class="fragment"><h3>Hello World</h3></li>
+					<li class="fragment"><h3>Селектори и функции селектори</h3></li>
+					<li class="fragment"><h3>DOM манипулации</h3></li>
+					<li class="fragment"><h3>Манипулации на стиловете</h3></li>
+				</ul>
+			</section>
+			<section>
+				<ul>
+					<li><h3>Цикли</h3></li>
+					<li class="fragment"><h3>Събития</h3></li>
+					<li class="fragment"><h3>AJAX</h3></li>
+					<!--<li class="fragment"><h3>Анимации</h3></li>
+					<li class="fragment"><h3>Добавяне на jQuery функции</h3></li>-->
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>jQuery - какво, защо и как?</</h2>
+			</section>
+			<section>
+				<h2>Какво е jQuery?</h2>
+				<ul>
+					<li class="fragment"><h4>Лека JavaScript библиотека (~90KB)</h4></li>
+					<li class="fragment"><h4>Позволява манипулации на DOM дървото, стиловете</h4></li>
+					<li class="fragment"><h4>Предоставя методи за управление на събитията</h4></li>
+					<li class="fragment"><h4>Позволява създаването на Анимации</h4></li>
+					<li class="fragment"><h4>AJAX</h4></li>
+					<li class="fragment"><h4>Има плъгин за почти всичко, от което имате нужда</h4></li>
+				</ul>
+			</section>
+			<section>
+				<img src="images/jquery_size.png">
+			</section>
+			<section>
+				<h2>Защо?</h2>
+				<ul>
+					<li class="fragment"><h4>"write less, do more"</h4></li>
+					<li class="fragment"><h4>улеснява писането на JavaScript</h4></li>
+					<li class="fragment"><h4>Много сайтове ползват jQuery</h4></li>
+					<li class="fragment"><h4>Пример (1)</h4></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Как?</h2>
+				<ul>
+					<li class="fragment"><h4>Download jQuery от jquery.com ИЛИ</h4></li>
+					<li class="fragment"><h4>Чрез референция към някой CDN, например google:</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+						<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+					</code></pre></li>
+					<li class="fragment"><h4>Актуални версии 1.11.3 и 2.1.4</h4></li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<h2>Hello world</h2>
+			<img src="images/jquery_hello.jpg" width="600" height="561">
+		</section>
+		<section>
+			<section>
+				<h2>Селектори</h2>
+				<ul>
+					<li class="fragment"><h4>Селекторите са същите като в css с малки изключения (<a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">CSS</a>)</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+						$("<селектор>") // jQuery("<селектор>")
+					</code></pre></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Функции селектори (примери)</h2>
+				<ul>
+					<li class="fragment"><h4>$("div").parent("&lt;selector&gt;")</h4></li>
+					<li class="fragment"><h4>$("div").parents("&lt;selector&gt;")</h4></li>
+					<li class="fragment"><h4>$("form").children("&lt;selector&gt;")</h4></li>
+					<li class="fragment"><h4>$("p").first()</h4></li>
+					<li class="fragment"><h4>$("div").last()</h4></li>
+					<li class="fragment"><h4>$(".selected").siblings("&lt;selector&gt;")</h4></li>
+					<li class="fragment"><h4>$("p").find("&lt;selector&gt;")</h4></li>
+				</ul>
+			</section>
+			<section>
+				<h2>length</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;селектор&gt;") връща списък,</h4></li>
+					<li class="fragment"><h4>в който броя елементи можем да проверим с length</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+						if ($(".selected").length > 0)
+					</code></pre></li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Манипулиране на DOM дървото</h2>
+			</section>
+			<section>
+				<h2>Добавяне на DOM елементи</h2>
+				<ul>
+					<li class="fragment"><h4>$("body").append("&lt;content&gt;");</h4></li>
+					<li class="fragment"><h4>$("body").prepend("&lt;content&gt;");</h4></li>
+					<li class="fragment"><h4>$("li.even").before("&lt;content&gt;");</h4></li>
+					<li class="fragment"><h4>$("&lt;selector/content&gt;").insertBefore("&lt;selector&gt;");</h4></li>
+					<li class="fragment"><h4>$("li.odd").after("&lt;content&gt;");</h4></li>
+					<li class="fragment"><h4>$("&lt;selector/content&gt;").insertAfter("&lt;selector&gt;");</h4></li>
+					<li class="fragment"><h4>Пример 2.1</h4></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Премахване на DOM елементи</h2>
+				<p>$("&lt;selector1&gt;").remove("&lt;selector2&gt;") – изтрива всички елементи избрани от selector2, които са деца на елементи избрани от selector1</p>
+			</section>
+			<section>
+				<h2>Показване/скриване на DOM елементи</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;selector&gt;").show()</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").hide()</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").toggle()</h4></li>
+					<li class="fragment"><h4>Пример 2.2</h4></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Извиличане и задаване на съдържание</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;selector&gt;").html()</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").html(htmlString)</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").text()</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").text(text)</h4></li>
+					<li class="fragment"><h4>Пример 2.3</h4></li>
+				</ul>
+				<aside class="notes">Съществува и overload метод на функциите html() и text() с единствен параметър функция, която от своя страна има 2 параметъра – индекс и html/text на всеки от избраните елементи. Функцията трябва да връща новия html/text на всеки от избраните елементи.</aside>
+			</section>
+			<section>
+				<h2>Добавяне/махане на класове на DOM елемент</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;selector&gt;").addClass(string)</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").removeClass(string)</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").toggleClass(string) </h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").hasClass(string)</h4></li>
+					<li class="fragment"><h4>Пример 2.3</h4></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Mанипулиране на css стилове</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;selector&gt;").css(propertyName)</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+						$("#menu").css("margin-top")
+					</code></pre>
+					<li class="fragment"><h4>$("&lt;selector&gt;").css(propertyNames)</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+						$("#menu").css(["margin", "padding", "background-color"])
+					</code></pre></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").css(propertyName, value)</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+$("#menu").css("background-color", "red"); // лоша
+$("#menu").css("display", "none");	// практика
+$("#menu").hide();</code></pre></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Манипулиране на атрибути</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;selector&gt;").attr("&lt;attribute name&gt;", value)</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").prop("&lt;attribute name&gt;", value)</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+$("#my-input").attr("type");
+$("#my-input").prop("type");
+					</code></pre>
+					<li class="fragment"><h4>Параметърът value не е задължителен</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt").data( key, value)</h4></li>
+				</ul>
+				<aside class="notes">Първата функция винаги връща стринг. Втората може да върне стойности от различни типове. Препоръчва се използването на prop(). http://jsfiddle.net/bipen/54nLM/
+				Функцията data може и да не приема параметър и така ще вземе всички двойки ключ-стойност зададени с .data().</aside>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Цикли в jQuery</h2>
+			</section>
+			<section>
+				<ul>
+					<li><h4>jQuery.each( array, function(index, value)) - за списъци</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+var text = "{";
+var arr = [ "one", "two", "three", "four", "five" ];
+jQuery.each( arr, function( index, value ) {
+  text += "{" + (index + 1) + " : " + value + "}";
+  if (index &lt; arr.length - 1) { text += ","; }
+});
+
+text += "}";
+						</code></pre>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<ul>
+					<li><h4>jQuery.each( object, function(key, value )) - за jQuery обекти</h4></li>
+					<li class="fragment"><pre><code data-trim contenteditable>
+$( "li" ).each(function( index ) {
+  $( this ).text() = index + " " + $( this ).text();
+});
+						</code></pre>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Събития</h2>
+			</section>
+			<section>
+				<h2>Какво са събитията?</h2>
+				<ul>
+					<li class="fragment"><h4>Събитията са "неща", които се случват на DOM елементите</h4></li>
+					<li class="fragment"><h4>Събитията правят сайтовете интерактивни</h4></li>
+					<li class="fragment"><h4>Можем да пишем код, който да "реагира на тези събития"</h4></li>
+					<li class="fragment"><h4>Кодът ни може да използва информация за събитието от event обект</h4></li>
+					<li class="fragment"><h4>Всеки елемент може да "слуша" за определено събитие</h4></li>
+				</ul>
+				<aside class="notes">
+					An HTML web page has finished loading
+					An HTML input field was changed
+					An HTML button was clicked
+				</aside>
+			</section>
+			<section>
+				<h2>Bubbling & Capturing</h2>
+				<ul>
+					<li class="fragment"><h4>Bubbling – настъпването на едно събитие последователно от най-вътрешния/вложения към най-външния елемент</h4></li>
+					<li class="fragment"><h4>Capturing – настъпването на едно събитие последователно от най-външния към най-вътрешния/вложения елемент</h4></li>
+					<li class="fragment"><h4>Само bubbling се поддържа от всички популярни браузъри</h4></li>
+					<li class="fragment"><a href="http://javascript.info/tutorial/bubbling-and-capturing" target="_blank">http://javascript.info/tutorial/bubbling-and-capturing</a></li>
+					<li class="fragment"><a href="http://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing" target="_blank">http://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing </a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>"Абониране" за събития</h2>
+				<ul>
+					<li class="fragment"><h4>$("&lt;selector&gt;").on(events, selector, data, handler)</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").onе(events, selector, data, handler)</h4></li>
+					<li class="fragment"><h4>$("&lt;selector&gt;").off(events, selector, handler)</h4></li>
+					<li class="fragment"><h4>НЕ ПОЛЗВАЙТЕ НИТО bind(), delegate(), live() ...</h4></li>
+					<li class="fragment"><h4>НИТО unbind(), undelegate() или die()</h4></li>
+				</ul>
+				<aside class="notes">
+selector – optional параметър, който указва кои деца на избрания първоначално елемент трябва да слушат за указаното събитие
+data – optional параметър, който може да се предаде в handler функцията, чрез event параметъра, който и се подава (event.data)
+handler функцията може да има параметър event, който представлява обект, съдържащ допълнителна информация за събитието
+
+				</aside>
+			</section>
+			<section>
+				<h2>Други функции за "абониране"</h2>
+				<ul>
+					<li><h4>.change(data, handler) &lt;=&gt; .on("change", data, handler)</h4></li>
+					<li><h4>.click(data, handler) &lt;=&gt; .on("click", data, handler)</h4></li>
+					<li><h4>.error(data, handler) &lt;=&gt; .on("error", data, handler)</h4></li>
+					<li><h4>.focus(data, handler) &lt;=&gt; .on("focus", data, handler)</h4></li>
+					<li><h4>.blur(data, handler)  &lt;=&gt; .on("blur", data, handler)</h4></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Още функции за "абониране"</h2>
+				<ul>
+					<li><h4>.focusin(data, handler) &lt;=&gt; .on("focusin", data, handler)</h4></li>
+					<li><h4 class="small-font">.focusout(data, handler) &lt;=&gt; .on("focusout", data, handler)</h4></li>
+					<li><h4 class="small-font">.keydown(data, handler) &lt;=&gt; .on("keydown", data, handler)</h4></li>
+					<li><h4 class="small-font">.keypress(data, handler) &lt;=&gt; .on("keypress", data, handler)</h4></li>
+					<li><h4 class="small-font">keyup(data, handler) &lt;=&gt; .on("keyup", data, handler)</h4></li>
+				</ul>
+				<aside class="notes">dblclick
+Error – например когато картинка не може да се зареди се хвърля събитие за грешка
+The focusin and focusout events bubble, the focus and blur events don't. That means that you can use the focusin and focusout on the parent element of a form field.
+				</aside>
+			</section>
+			<section>
+				<h2>И Още функции за "абониране"</h2>
+				<ul>
+					<li><h4>.mousedown(data, handler) &lt;=&gt; .on("mousedown" ...)</h4></li>
+					<li><h4>.mouseup(...) &lt;=&gt; .on("mouseup", ...)</h4></li>
+					<li><h4>.mouseenter(...) &lt;=&gt; .on("mouseenter", ...)</h4></li>
+					<li><h4>.mouseleave(...) &lt;=&gt; .on("mouseleave", ...)</h4></li>
+					<li><h4>.mouseover(...) &lt;=&gt; .on("mouseover", ...)</h4></li>
+					<li><h4>.mouseout(...) &lt;=&gt; .on("mouseout", ...)</h4></li>
+					<li><h4>.mousemove(...) &lt;=&gt; .on("mousemove", ...)</h4></li>
+				</ul>
+				<a href="http://jsfiddle.net/ZCWvJ/7/" target="_blank">Пример</a>
+				<aside class="notes">dblclick
+Error – например когато картинка не може да се зареди се хвърля събитие за грешка
+The focusin and focusout events bubble, the focus and blur events don't. That means that you can use the focusin and focusout on the parent element of a form field.
+				</aside>
+			</section>
+			<section>
+				<h2>Други функции за събития</h2>
+				<ul>
+					<li><h4>.ready() - позволява да изпълним код след зареждане на DOM-a</h4></li>
+					<li><h4>.resize() &lt;=&gt; .on("resize", ...)</h4></li>
+					<li><h4>.scroll() &lt;=&gt; .on("scroll", ...)</h4></li>
+					<li><h4>.select() &lt;=&gt; .on("select", ...), работи само за input и textarea елементи</h4></li>
+					<li><h4>.submit() &lt;=&gt; .on("submit", ...)</h4></li>
+			</section>
+			<section>
+				<h2>Създаване на събития чрез jQuery</h2>
+				<ul>
+					<li><h4>Чрез функцията trigger(), например $("#my-form").trigger("submit")</h4></li>
+					<li></h4>Чрез функциите описани в предишните слайдове, например:</h4></li>
+					<li></h4>$("#my-button").click();</h4></li>
+					<li></h4>$(window).resize();</h4></li>
+					<li></h4>$("#my-form").submit()</h4></li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>AJAX заявки</h2>
+			</section>
+			<section>
+				<h2>Какво? Защо? Как</h2>
+				<ul>
+					<li><h4>AJAX = Asynchronous JavaScript and XML</h4></li>
+					<li><h4>Gmail, Google Maps, Youtube и Facebook ползват AJAX</h4></li>
+					<li><h4>Има няколко функции, чрез които могат да се изпълни AJAX заявка - .аjax(), .get(), .post(), .load()…</h4></li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<h2>Благодаря</h2>
+			<p>
+				Марин Парушев<br>
+				<small>marin.parushev@sap.com</small>
+			</p>
+		</section>
+	</div>
+
+</div>
+
+<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+<script src="node_modules/reveal.js/js/reveal.js"></script>
+<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+		transition: 'convex',
+		dependencies: [
+			{
+				src: 'node_modules/reveal.js/lib/js/classList.js', condition: function () {
+				return !document.body.classList;
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+				return !!document.querySelector('[data-markdown]');
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+				return !!document.querySelector('[data-markdown]');
+			}
+			},
+			{
+				src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+				return !!document.querySelector('pre code');
+			}, callback: function () {
+				hljs.initHighlightingOnLoad();
+			}
+			},
+			{src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true},
+			{src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true}
+		]
+	});
+
+	RevealCSSSnippet({
+		//el is a DOM node that you wish to scope the CSS too. The scoping is done via attribute selector, so beware of specificity issues with existing styles. The default is no scoping, which allows you to write CSS to target anything in the presentation.
+		el: document.getElementById('targetElement'),
+
+		//cssValue is the default CSS to be loaded into the block at initialization. The default is empty string.
+		cssValue: "background: #ff0;\r\nwidth: 500px;\r\nheight: 50px;"
+	});
+
+</script>
+</body>
+</html>
