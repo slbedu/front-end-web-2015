@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizzeria</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <style media="screen">
+    #wrap {
+      max-width: 860px;
+      margin: 12px auto;
+      padding: 12px;
+      background: #efefef;
+      box-shadow: 0 4px 8px 8px #bbb;
+    }
+
+    .jumbotron {
+      background: #D6E9C6;
+      text-align: center;
+    }
+
+    .order-result {
+      margin-top: 18px;
+    }
+
+    #pizza-alert {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="wrap" class="container-fluid">
+
+    <div class="row">
+      <header class="jumbotron">
+        <h1>Welcome to <strong>Marti's</strong></h1>
+        <h2>Best pizzas in town</h2>
+      </header>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Choose a pizza</h3>
+          </div>
+          <div class="panel-body">
+            <select id="pizzas-select" class="form-control" name="pizzas">
+              <option value="default" selected disabled>What to be</option>
+              <option value="margherita">Margherita</option>
+              <option value="diavolo">Diavolo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Choose pizza size</h3>
+          </div>
+          <div class="panel-body">
+            <select id="sizes-select" class="form-control" name="sizes">
+              <option value="default" selected disabled>How big to be</option>
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <button type="button" class="btn btn-success btn-lg btn-block" id="order-button">Order</button>
+      </div>
+    </div>
+
+    <div class="order-result">
+      <div class="progress progress-striped">
+        <div id="progress-bar" class="progress-bar progress-bar-success"></div>
+      </div>
+
+      <div id="pizza-alert" class="alert alert-success" role="alert"></div>
+    </div>
+
+  </div>
+
+  <script src="dist/app.js"></script>
+</body>
+</html>
