@@ -43,8 +43,8 @@ DOM манипулации, AJAX възможности, помощни функ
 13. Разработка на приложения с OPEN UI5  
 Контроли, агрегации, асоциации и други
 
-14. Графичен дизайн и адаптивни уеб страници  
+14. [Графичен дизайн и адаптивни уеб страници](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/14-graphic-design-accessability)  
 UX Patterns, Design Thinking, адаптивен CSS, BootstrapUI
 
-15. Създаване на уеб сайтове (HTML & CSS)  
+15. [Създаване на уеб сайтове (HTML & CSS)](https://github.com/slbedu/front-end-web-2015/tree/master/lectures/15-photoshop-basics)    
 Photoshop -> HTML & CSS, адаптивен уеб дизайн с много колони
