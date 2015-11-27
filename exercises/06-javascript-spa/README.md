@@ -1,21 +1,21 @@
-# Създайте обект Renderer с един метод:
-1. render(viewName, data) - метод, който връща готов HTML във формата на стринг
+## Създайте обект Renderer с един метод:
+1. Renderer.render(viewName, data) - метод, който връща готов HTML във формата на стринг
 
-# Създайте обект Movies с два метода:
-1. getTopByYear(year) - метод, който връща топ 20 филми от дадена година
-2. getById(id) - метод, който връща детайлна информация за филм по ID
+## Създайте обект Movies с два метода:
+1. Movies.getTopByYear(year) - метод, който връща топ 20 филми от дадена година
+2. Movies.getById(id) - метод, който връща детайлна информация за филм по ID
 
-# Създайте три темплейта (Handlebars.js):
+## Създайте три темплейта (Handlebars.js):
 1. Първият е началната страница
 2. Вторият показва топ филмите за дадена година
 3. Третият показва детайлите за избран филм
 
-# Създайте три маршрута (Sammy.js):
+## Създайте три маршрута (Sammy.js):
 1. За началната страница - #/
 2. За топ филмите по година - #/movies/:year
 3. За детайлите на даден филм - #/movie/:id
 
-# API End Points
+## API End Points:
 1. Get all movies by year:
 	```
 	http://api.themoviedb.org/3/discover/movie
@@ -27,7 +27,7 @@
 2. Get movie by ID:
 	```
 	http://api.themoviedb.org/3/movie/__MOVIE_ID__
-	?api_key=__YOUR_API_KEY__
+	  ?api_key=__YOUR_API_KEY__
 	```
 
 3. Get small poster:
@@ -40,7 +40,7 @@
 	http://image.tmdb.org/t/p/w342/__POSTER_PATH__
 	```
 
-# Sammy.js маршрути
+## Sammy.js маршрути:
 1. Как се прави приложение с помощта на Sammy.js:
 	```javascript
 	// направа на приложение чрез Sammy.js
@@ -65,3 +65,12 @@
 	// трябва да го има дефиниран в маршрутите при инициализаране на Sammy.js
 	app.setLocation(pattern);
 	```
+## Краен резултат:
+1. Начална страница  
+![Landing page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/home.jpg)
+
+2. Топ филми по година  
+![Top movies per year page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/movies.jpg)
+
+3. Детайли за избран филм  
+![Movie details page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/movie-details.jpg)
