@@ -67,10 +67,10 @@
 	```
 ## Краен резултат:
 1. Начална страница  
-![Landing page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/home.jpg)
+![Landing page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/home.JPG)
 
 2. Топ филми по година  
-![Top movies per year page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/movies.jpg)
+![Top movies per year page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/movies.JPG)
 
 3. Детайли за избран филм  
-![Movie details page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/movie-details.jpg)
+![Movie details page](https://github.com/slbedu/front-end-web-2015/tree/master/exercises/06-javascript-spa/result/movie-details.JPG)
