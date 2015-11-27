@@ -65,6 +65,7 @@
 	// трябва да го има дефиниран в маршрутите при инициализаране на Sammy.js
 	app.setLocation(pattern);
 	```
+
 ## Краен резултат:
 1. Начална страница  
 ![Landing page](https://raw.githubusercontent.com/slbedu/front-end-web-2015/master/exercises/06-javascript-spa/result/home.JPG)
