@@ -1,0 +1,22 @@
+<div class="media">
+	<div class="media-left">
+		<img class="media-object" src="http://image.tmdb.org/t/p/w342/{{poster_path}}" alt="{{original_title}} poster">
+	</div>
+	<div class="media-body">
+		<h1 class="media-heading">{{original_title}}</h1>
+		<p>
+			<span>
+				Genres:
+				{{#each genres}}
+					{{name}}
+				{{/each}}
+			</span>
+			|
+			<span>Duration: {{runtime}} min</span>
+			|
+			<span>Release date: {{release_date}}</span>
+		</p>
+		<hr>
+		<p class="lead">{{overview}}</p>
+	</div>
+</div>
