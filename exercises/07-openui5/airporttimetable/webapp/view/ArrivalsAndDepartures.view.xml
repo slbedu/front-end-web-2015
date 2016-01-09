@@ -1,0 +1,93 @@
+<mvc:View controllerName="edu.controller.ArrivalsAndDepartures" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<App width="80%">
+		<NavContainer id="navContainer">
+			<Page id='pageArrivals' title="{i18n>arrivals}">
+				<content>
+					<Table items="{ path: '/arrivals' }" noDataText="{i18n>noData}">
+						<columns>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ЧАС"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ОТ"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="Полет №"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ИЗХ."/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ЗАК."/>
+								</header>
+							</Column>
+						</columns>
+						<ColumnListItem class="navTableItemLayout" vAlign="Middle">
+							<cells id="columnListItem_cells">
+								<Text text="{path: 'arrives', formatter: '.formatDate'}"></Text>
+								<Text text="{from}"></Text>
+								<Text text="{airline} {flightNumber}"></Text>
+								<Text text="{gate}"></Text>
+								<Text
+									text="{ parts : [{ path: 'delay' }, { path: 'closeToArrive' }, { path: 'arriving' }, { path: 'arrived' }], formatter: 'edu.utils.Formatter.formatArrivalsRow'}"/>
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</content>
+			</Page>
+			<Page id='pageDepartures' title="{i18n>departures}">
+				<content>
+					<Table class="navTableControlLayout" growing="true" growingScrollToLoad="true" items="{ path: '/departures' }" noDataText="{i18n>noData}">
+						<columns>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ЧАС"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ЗА"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="Полет №"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ИЗХОД"/>
+								</header>
+							</Column>
+							<Column hAlign="Left">
+								<header>
+									<Label text="ЗАК."/>
+								</header>
+							</Column>
+						</columns>
+						<ColumnListItem class="navTableItemLayout" vAlign="Middle">
+							<cells id="columnListItem_cells">
+								<Text text="{path: 'departures', formatter: '.formatDate'}"></Text>
+								<Text text="{to}"></Text>
+								<Text text="{airline} {flightNumber}"></Text>
+								<Text text="{gate}"></Text>
+								<Text
+									text="{ parts : [{ path: 'delay' }, { path: 'closeToDeparture'}, { path: 'departuring'}, {path: 'departured'}], formatter: 'edu.utils.Formatter.formatDeparturesRow'}"/>
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</content>
+			</Page>
+		</NavContainer>
+	</App>
+</mvc:View>

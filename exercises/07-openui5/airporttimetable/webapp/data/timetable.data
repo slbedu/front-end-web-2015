@@ -1,0 +1,69 @@
+{
+"departures": [{
+		"order": 1,
+		"to": "ФРАНКФУРТ",
+		"departures": 1452325500000,
+		"flightNumber": "12345",
+		"airline": "WIZZ Air",
+		"gate": 3,
+		"delay": 0
+	}, {
+		"order": 2,
+		"to": "БАРСЕЛОНА",
+		"departures": 1452325560000,
+		"flightNumber": "12346",
+		"airline": "Bulgaria Air",
+		"gate": 2,
+		"delay": 0
+	}, {
+		"order": 3,
+		"to": "МАДРИД",
+		"departures": 1452325680000,
+		"flightNumber": "1234",
+		"airline": "Bulgaria Air",
+		"gate": 12,
+		"delay": 3
+	}, {
+		"order": 4,
+		"to": "ПАРИЖ",
+		"departures": 1452326100000,
+		"flightNumber": "12347",
+		"airline": "Air France",
+		"gate": 2,
+		"delay": 0
+	}
+
+],
+"arrivals": [{
+	"order": 1,
+	"from": "МОСКВА",
+	"arrives": 1452325560000,
+	"flightNumber": "12345",
+	"airline": "Bulgaria Air",
+	"gate": 3,
+	"delay": 0
+}, {
+	"order": 2,
+	"from": "ЛОНДОН",
+	"arrives": 1452325680000,
+	"flightNumber": "12346",
+	"airline": "Bulgaria Air",
+	"gate": 2,
+	"delay": 0
+}, {
+	"order": 3,
+	"from": "БУРГАС",
+	"arrives": 1452325920000,
+	"flightNumber": "1234",
+	"airline": "Bulgaria Air",
+	"gate": 2,
+	"delay": 3
+}, {
+	"order": 4,
+	"from": "ВАРНА",
+	"arrives": 1452326100000,
+	"flightNumber": "12347",
+	"airline": "Bulgaria Air",
+	"gate": 2,
+	"delay": 0
+}]}

@@ -1,0 +1,41 @@
+#__app0 {
+	margin-left: 10%;
+}
+.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
+    width: 99.9%; /* 100% creates a horizontal scrollbar*/
+    margin: 0;
+    left: 0;
+}
+
+.sap-phone #__app0{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+.closeToArrive, .closeToDeparture {
+	background-color: yellow !important;
+}
+.closeToArrive td>span, .closeToDeparture td>span {
+	color: black !important;
+}
+
+.arriving, .departuring {
+	animation: blinker 1s linear infinite;
+	background-color: red !important;
+}
+.arriving td>span, .departuring td>span {
+	color: black !important;
+}
+
+.arrived {
+	opacity: 0.5;
+}
+.departured {
+	opacity: 0.3;
+	background-color: red !important;
+}
+
+@keyframes blinker {  
+  50% { background-color: yellow}
+}
