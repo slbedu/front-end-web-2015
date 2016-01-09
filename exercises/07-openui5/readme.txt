@@ -1,3 +1,7 @@
+Real working example for this project is available here: 
+https://airporttimetable-p1653764841trial.dispatcher.hanatrial.ondemand.com/webapp/index.html?sap-ui-theme=sap_hcb
+(you must have an account registered at https://accounts.sap.com/ui/public/showRegisterForm?spName=https%3A%2F%2Fscn.sap.com)
+
 This can be run directly if pasted in a HTML5 app git repository or SAPWebIDE.
 
 Alternativelly modify the index.html tag:
